@@ -1,0 +1,350 @@
+#wrapper{
+	width: 960px;
+	margin: 0px auto;
+	color: black;
+}
+
+#navBar{
+	height:50px;
+	border-bottom: 1px solid black;
+}
+
+#navBar .navLink{
+	float: left;
+	line-height:50px;
+	color: black;
+}
+
+.navLink a{
+	text-decoration: none;
+	color: black;
+}
+
+.navLink:not(:first-child){
+	margin: 0 20px;
+}
+
+#navBar li{
+	list-style-type: none;
+}
+
+#navBar li ul{
+	display: none;
+	position: absolute;
+}
+
+#navBar li:hover ul{
+	display: block;
+	background-color: white;
+	z-index: 5;
+}
+
+#navBar li:hover ul li:hover{
+	background-color: #DDD;
+}
+
+#navBar #loginContainer{
+	float: right;
+	line-height: 50px;
+}
+
+#navBar #login{
+	display: block;
+	cursor: pointer;
+	text-decoration: none;
+	color: black;
+}
+
+#content{
+	margin-top: 15px;
+}
+
+#spashImage{
+	width: 600px;
+	height: 400px;
+	float: left;
+	background-color: gray;
+	margin-right: 10px;
+}
+
+#spashText{
+	float: left;
+}
+
+#loginWindow{
+	width: 300px;
+	text-align: center;
+	border:1px solid black;
+	position: fixed;
+	padding: 25px;
+	top: 25%;
+	left: calc(50% - 150px);
+	background-color: white;
+	display: none;
+	z-index: 3;
+}
+
+#loginWindow label{
+	display: inline-block;
+	width: 100px;
+	margin: 10px 0px;
+	text-align: left;
+}
+
+#loginWindow input[type="text"], #loginWindow input[type="password"]{
+	width: 192px;
+}
+
+#loginWindow input[type="submit"]{
+	float: right;
+}
+
+#loginWindow a{
+	float: left;
+}
+
+#shadow{
+	width: 100%;
+	height: 100%;
+	position: fixed;
+	visibility: hidden;
+	background-color: rgba(0,0,0,0.7);
+	top:0;
+	z-index: 2;
+}
+
+.column{
+	float:left;
+	width: 300px;
+	min-height: 500px;
+	border: 1px solid black;
+	margin: 0 4px;
+	padding: 5px;
+}
+
+.column a{
+	display: block;
+	text-decoration: none;
+}
+
+.column span{
+	font-weight: bold;
+	margin-bottom: 10px;
+	display:;
+}
+
+#articleView{
+	width: 65%;
+	float: left;
+}
+
+#noteView{
+	width: 32%;
+	float: right;
+}
+
+.articleBlock{
+	min-height: 500px;
+	padding: 10px;
+	border: 1px solid black;
+}
+
+#tableBlock{
+	float: left;
+	margin-left: 15px;
+	margin-top: 18px;
+}
+
+td{
+	height: 100px;
+	width: 110px;
+}
+
+#filterBlock{
+	width: 300px;
+	float: left;
+}
+
+#filterBlock div{
+	border: 1px solid black;
+	padding: 10px;
+}
+
+#flashcardBlock{
+	float: left;
+	width: 65%;
+}
+
+#flashcard{
+	height: 400px;
+	overflow: auto;
+	border: 1px solid black;
+	text-align: center;
+	position: relative;
+}
+
+#flashcard h3{
+	line-height: 400px;
+}
+
+#flashcard .flashcard_fact{
+	line-height: 100px;
+}
+
+#flashcardBlock_right{
+	float: left;
+	width: 30%;
+	margin-left: 3%;
+	margin-top: 35px;
+}
+
+#flashcardBlock_right a{
+	width: 100%;
+	color: black;
+	text-decoration: none;
+	text-align: center;
+	display: block;
+	border: 1px solid black;
+}
+
+#flashcardBlock_right div{
+	border: 1px solid black;
+	margin-top: 10px;
+	padding: 15px;
+}
+
+#flashcardBlock_right div a{
+	margin-top: 10px;
+}
+
+#buttonPanel{
+	text-align: center;
+	margin-top: 15px;
+}
+
+#buttonPanel a{
+	width: 100px;
+	position: relative;
+	display: inline-block;
+	border: 1px solid black;
+	text-decoration: none;
+	color: black;
+}
+
+#buttonPanel a:first-child{
+	float: left;
+}
+
+#buttonPanel a:last-child{
+	float: right;
+}
+
+#feedbackBlock{
+	position: absolute;
+	bottom: 0;
+	right: 15px;
+}
+
+#feedbackBlock div{
+	width: 100px;
+	margin: 15px 0;
+	border: 1px solid black;
+}
+
+#settings{
+	background-color: white;
+	z-index: 2;
+	position: fixed;
+	top: 50px;
+	border: 1px solid black;
+	padding: 15px;
+}
+
+#optionBlock{
+	float: left;
+	margin-left: 15px;
+}
+
+#matching a{
+	display: block;
+	border: 1px solid black;
+	float: right;
+	width: 100px;
+	text-align: center;
+	text-decoration: none;
+}
+
+#matching h2{
+	display: inline;
+}
+
+#matching .column{
+	border: none;
+}
+
+#matching .column:nth-child(3){
+	border: 1px solid black;
+	height: 507px;
+	margin-top: 5px;
+}
+
+.column .half_column{
+	height: 250px;
+	border: 1px solid black;
+	margin-bottom: 15px;
+}
+
+.half_column strong{
+	display: block;
+	margin: 15px 0 0 15px;
+}
+
+.half_column .fact{
+	margin-left: 5px;
+}
+
+.fact{
+	margin-top:5px;
+	width: 95%;
+	border: 1px solid black;
+}
+
+.incorrect{
+	background-color: #DDD;
+}
+
+#multipleChoiceBlock li{
+	margin-top: 15px;
+}
+
+#multipleChoiceBlock .incorrect{
+	color: red;
+	background-color: white;
+}
+
+#multipleChoiceBlock .correct{
+	color: green;
+}
+
+#multipleChoiceBlock #buttons{
+	float: right;
+}
+
+#buttons a{
+	display: block;
+	float: left;
+	color: black;
+	border: 1px solid black;
+	text-align: center;
+	width: 100px;
+	text-decoration: none;
+}
+
+#feedback{
+	text-align: center;
+	border: 1px solid black;
+	margin: 15px 0;
+	clear: both;
+}
+
+
