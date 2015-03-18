@@ -1,27 +1,55 @@
-#wrapper{
+body {
+	margin:0px;
+	padding:0px;
+	background: #fff;
+	background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAYAAAAGCAYAAADgzO9IAAAABmJLR0QAAAAAAAD5Q7t/AAAAGElEQVR42mNgYGCQgmIMIEWkGHYTKBAEAFoqATmqDR/RAAAAAElFTkSuQmCC);
+	-moz-background-size: 3px 3px;
+	-ie-background-size: 3px 3px;
+	-o-background-size: 3px 3px;
+	-webkit-background-size: 3px 3px;
+	background-size: 3px 3px;
+	font-family: 'Roboto', sans-serif;
+}
+
+.wrapper{
 	width: 960px;
 	margin: 0px auto;
 	color: black;
 }
 
 #navBar{
+	width:100%;
 	height:50px;
-	border-bottom: 1px solid black;
+	border-bottom: 1px solid white;
+	background:-webkit-linear-gradient(left, #3f9db6, #6ab067);
+	box-shadow:#aaa 0px 2px 5px;
+	position:fixed;
+	top: 0px;
+}
+
+#navBar #logo {
+	font-weight:bold;
+	margin-right:40px;
 }
 
 #navBar .navLink{
 	float: left;
 	line-height:50px;
-	color: black;
+	color: white;
 }
 
 .navLink a{
 	text-decoration: none;
-	color: black;
+	color: white;
 }
 
 .navLink:not(:first-child){
 	margin: 0 20px;
+}
+
+#navBar ul {
+	margin: 0px;
+	padding:0px;
 }
 
 #navBar li{
@@ -35,13 +63,36 @@
 
 #navBar li:hover ul{
 	display: block;
-	background-color: white;
+	background-color: #4c4c4c;
 	z-index: 5;
 }
 
-#navBar li:hover ul li:hover{
-	background-color: #DDD;
+/* Adds the caret before the dropdown */
+#navBar li:hover ul::before{
+	content: "";
+	width: 0; 
+	height: 0; 
+	border-left: 10px solid transparent;
+	border-right: 10px solid transparent;	
+	border-bottom: 10px solid #4c4c4c;
+	position: absolute;
+	top: -10px;
 }
+
+
+#navBar li ul li {
+	margin:0px;
+	padding:0px 20px;
+}
+
+#navBar li ul li a {
+	display:block;
+}
+
+#navBar li:hover ul li:hover{
+	background-color: #f6801e;
+}
+
 
 #navBar #loginContainer{
 	float: right;
@@ -52,11 +103,17 @@
 	display: block;
 	cursor: pointer;
 	text-decoration: none;
-	color: black;
+	color: white;
 }
 
 #content{
-	margin-top: 15px;
+	margin-top: 80px;
+}
+
+#content p {
+	color: #4c4c4c;
+	font-size:15px;
+	line-height:1.5em;
 }
 
 #spashImage{
@@ -79,9 +136,10 @@
 	padding: 25px;
 	top: 25%;
 	left: calc(50% - 150px);
-	background-color: white;
+	background-color: #3f9db6;
 	display: none;
 	z-index: 3;
+	color: white;
 }
 
 #loginWindow label{
@@ -111,6 +169,14 @@
 	background-color: rgba(0,0,0,0.7);
 	top:0;
 	z-index: 2;
+}
+
+.blur {
+	-webkit-filter: blur(5px);
+	-moz-filter: blur(5px); 
+	-o-filter: blur(5px);
+	-ms-filter: blur(5px);
+	filter: blur(5px);
 }
 
 .column{
@@ -151,8 +217,9 @@
 
 #tableBlock{
 	float: left;
-	margin-left: 15px;
+	margin-right: 20px;
 	margin-top: 18px;
+	width:650px;
 }
 
 td{
@@ -161,7 +228,7 @@ td{
 }
 
 #filterBlock{
-	width: 300px;
+	width: 290px;
 	float: left;
 }
 

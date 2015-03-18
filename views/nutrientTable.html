@@ -6,11 +6,11 @@
 	<link type="text/css" rel="stylesheet" href="../css/style.css" />
 </head>
 <body>
-	<div id="wrapper">
-		<div id="navBar">
+	<div id="navBar">
+		<div class="wrapper">
 			<ul>
-				<li class="navLink"><a href="home.html">NDFS 100</a></li>
-				<li class="navLink"><a href="articles.html">Articles & Worksheets</a class="navLink"></li>
+				<li id="logo" class="navLink"><a href="home.html">NDFS 100</a></li>
+				<li class="navLink"><a href="articles.html">Articles &amp; Worksheets</a class="navLink"></li>
 				<li class="navLink"><a href="nutrientTable.html">Nutrient Table</a></li>
 				<li class="navLink">Study Tools
 					<ul>
@@ -24,21 +24,9 @@
 				<a id="login" href="index.html">Logout</a>
 			</div>
 		</div>
+	</div>
+	<div class="wrapper">
 		<div id="content">
-			<div id="filterBlock"><strong>Filters</strong>
-				<div>
-					<strong>Nutrients</strong><br>
-					<input type="checkbox" checked/>Vitamin C<br>
-					<input type="checkbox" checked/>Thiamin<br>
-					<input type="checkbox" checked/>Calcium<br>
-					<input type="checkbox" checked/>Zinc<br><br>
-					<strong>Category</strong><br>
-					<input type="checkbox" checked/>Function<br>
-					<input type="checkbox" checked/>Deficiency Symptoms<br>
-					<input type="checkbox" checked/>Toxicity Symptoms<br>
-					<input type="checkbox" checked/>Food Sources<br>
-				</div>
-			</div>
 			<div id="tableBlock">
 				<table border="1">
 					<thead>
@@ -81,6 +69,20 @@
 						</tr>
 					</tbody>
 				</table>
+			</div>
+			<div id="filterBlock"><strong>Filters</strong>
+				<div>
+					<strong>Nutrients</strong><br>
+					<input type="checkbox" checked/>Vitamin C<br>
+					<input type="checkbox" checked/>Thiamin<br>
+					<input type="checkbox" checked/>Calcium<br>
+					<input type="checkbox" checked/>Zinc<br><br>
+					<strong>Category</strong><br>
+					<input type="checkbox" checked/>Function<br>
+					<input type="checkbox" checked/>Deficiency Symptoms<br>
+					<input type="checkbox" checked/>Toxicity Symptoms<br>
+					<input type="checkbox" checked/>Food Sources<br>
+				</div>
 			</div>
 		</div>
 	</div>

@@ -1,32 +1,40 @@
-
 <!DOCTYPE html>
 <html>
 <head>
 	<title>NDFS 100</title>
 	<link type="text/css" rel="stylesheet" href="../css/style.css" />
+	<link href='http://fonts.googleapis.com/css?family=Roboto:400,700,500' rel='stylesheet' type='text/css'>
 	<script>
 		function displayLogin(){
 			document.getElementById("loginWindow").style.display = "block";
 			document.getElementById("shadow").style.visibility = "visible";
+			document.getElementById("content").className = "blur";
+			document.getElementById("navBar").className = "blur";
+		}
+
+		function hideLogin() {
+			document.getElementById("loginWindow").style.display = "none";
+			document.getElementById("shadow").style.visibility = "hidden";
+			document.getElementById("content").className = "";
+			document.getElementById("navBar").className = "";	
 		}
 	</script>
 </head>
 <body>
-	<div id="wrapper">
-		<div id="navBar">
-			<div class="navLink">NDFS 100</div>
+	<div id="navBar">
+		<div class="wrapper">
+			<div id="logo" class="navLink">NDFS 100</div>
 			<div id="loginContainer">
 				<a id="login" onclick="displayLogin();">Login</a>
 			</div>
 		</div>
+	</div>
+	<div class="wrapper">
 		<div id="content">
 			<div id="spashImage"></div>
 			<div id="splashText">
-				<p>Lorem ipsum dolor sit amet, inani novum his ex, sed rebum admodum te. Tota commune menandri mei te, an elitr regione qui. Graecis reformidans vix id, sit ei zril numquam. Sale accumsan ut eum, id civibus minimum qui. Suas putent vivendum ad ius. Rebum commune tacimates eum ex, eu est vivendo consequat.</p>
-
-				<p>Vel tantas exerci at. Vix unum detracto at. Ad eam porro abhorreant, eam ut graeco argumentum, te recusabo inimicus torquatos sed. In libris theophrastus sed, brute labitur facilisis an duo.</p>
-
-				<p>Sed porro malorum phaedrum at, appareat intellegat deterruisset nam ut. Mea id causae utamur omittantur, vim in ornatus euripidis. Nec augue solet an, et nec ipsum voluptatum. Autem scaevola mel at. Populo vidisse ius id, melius nostrud lobortis est te.</p>
+				<p>Welcome to NDFS 100. We're excited to have you in the class! This website will be a great resource to you as you go through the semester.  You will find readings, worksheets, diagrams, and tables that will be very useful to this class. To enhance your learning and studying experience, this website also provides study tools like flashcards and games to help you learn the nutrient table.  So login and get started! 
+				</p>
 			</div>
 		</div>
 		<div id="loginWindow">
