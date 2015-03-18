@@ -11,6 +11,11 @@ body {
 	font-family: 'Roboto', sans-serif;
 }
 
+h2 {
+	color: #4c4c4c;
+	margin: 10px 0px;
+}
+
 .wrapper{
 	width: 960px;
 	margin: 0px auto;
@@ -183,7 +188,6 @@ body {
 	float:left;
 	width: 300px;
 	min-height: 500px;
-	border: 1px solid black;
 	margin: 0 4px;
 	padding: 5px;
 }
@@ -191,12 +195,11 @@ body {
 .column a{
 	display: block;
 	text-decoration: none;
-}
-
-.column span{
-	font-weight: bold;
-	margin-bottom: 10px;
-	display:;
+	padding:10px 0px;
+	margin-bottom:1px;
+	background: #e6e6e6;
+	text-indent:20px;
+	color: #4c4c4c;
 }
 
 #articleView{
