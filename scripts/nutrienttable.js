@@ -7,6 +7,8 @@ window.onload = function() {
 		loadFromFile("../json/emptyData.json");
 	}
 	buildTable();
+	showNutrientFilters();
+	addFilterListeners();
 }
 
 // We could also have it save when a textarea changes or something
@@ -17,7 +19,7 @@ setInterval(function() {
 // Rebuilds the entire table from data and puts it in the table block div
 function buildTable()
 {
-	var table = "<table>" +
+	var table = "<table id='nutrientTable'>" +
 		"<thead>" +
 		"<tr>" +
 		"	<th></th>" +
@@ -45,7 +47,6 @@ function buildTable()
 	table += "</tbody></table>";
 	document.getElementById("tableBlock").innerHTML = table;
 }
-
 
 function loadFromFile(filepath)
 {
@@ -77,4 +78,58 @@ function saveToLocalStorage()
 function loadFromLocalStorage()
 {
 	data = JSON.parse(localStorage.getItem('nutrientTableData'));
+}
+
+function showNutrientFilters()
+{
+	var checkboxes = "";
+	for (var key in data) {
+		var cleanName = key.replace(" ", "_");
+		checkboxes += "<input type='checkbox' id='" + cleanName + "Checkbox' checked />" + key + "<br>";
+	}
+	document.querySelector("#nutrientCheckboxes").innerHTML = checkboxes;
+}
+
+function addFilterListeners()
+{
+	var checkboxes = document.querySelectorAll("#filterBlock input");
+	for (var i = 0; i < checkboxes.length; i++) {
+		checkboxes[i].addEventListener("click", function() {
+			applyFilters();
+		});
+	}
+}
+
+function applyFilters()
+{
+	// Apply category filters
+	var categories = ["function", "dSymptoms", "tSymptoms", "sources"];
+	for (var i = 0; i < categories.length; i++) {
+		var c = categories[i];
+		var displayMode = document.getElementById(c + "Checkbox").checked ? "table-cell" : "none";
+		
+		// column header
+		cells = document.querySelector("#nutrientTable th:nth-child(" + parseInt(i + 2) + ")").style.display = displayMode;
+		
+		// column cells
+		var cells = document.querySelectorAll("#nutrientTable td:nth-child(" + parseInt(i + 2) + ")");
+		for (var j = 0; j < cells.length; j++) {
+			cells[j].style.display = displayMode;
+		}
+	}
+
+	// Apply nutrient filters.
+	var i = 0;
+	for (var key in data) {
+		var cleanName = key.replace(" ", "_");
+		var displayMode = document.getElementById(cleanName + "Checkbox").checked ? "table-cell" : "none";
+		var cells = document.querySelectorAll("#nutrientTable tr:nth-child(" + parseInt(i + 1) + ") td");
+		for (var j = 0; j < cells.length; j++) {
+			// Always update the nutrient label, the others only if the category hasn't already turned it off.
+			if (j == 0 || cells[j].style.display != "none") {
+				cells[j].style.display = displayMode;
+			}
+		}
+		i++;
+	}
 }
