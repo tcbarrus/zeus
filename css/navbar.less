@@ -1,0 +1,87 @@
+#navBar{
+	width:100%;
+	height:50px;
+	border-bottom: 1px solid white;
+	background:-webkit-linear-gradient(left, #3f9db6, #6ab067);
+	box-shadow:#aaa 0px 2px 5px;
+	position:fixed;
+	top: 0px;
+
+	#logo{
+		font-weight:bold;
+		margin-right:40px;
+	}
+
+	.navLink{
+		float:left;
+		line-height:50px;
+		color:white;
+
+		a{
+			text-decoration: none;
+			color: white;
+		}
+	}
+
+	.navLink:not(:first-child){
+		margin: 0 20px;
+	}
+
+	ul{
+		margin: 0px;
+		padding:0px;
+
+		li{
+			list-style-type: none;
+
+			ul{
+				display: none;
+				position: absolute;
+
+				li{
+					margin:0px;
+					padding:0px 20px;
+
+					a{
+						display:block;
+					}
+				}
+
+				li:hover{
+					background-color: #f6801e;
+				}
+			}
+		}
+
+		li:hover{
+			ul{
+				display: block;
+				background-color: #4c4c4c;
+				z-index: 5;
+			}
+
+			ul:before{
+				content: "";
+				width: 0; 
+				height: 0; 
+				border-left: 10px solid transparent;
+				border-right: 10px solid transparent;	
+				border-bottom: 10px solid #4c4c4c;
+				position: absolute;
+				top: -10px;
+			}
+		}
+	}
+
+	#loginContainer{
+		float: right;
+		line-height: 50px;
+	}
+
+	#login{
+		display: block;
+		cursor: pointer;
+		text-decoration: none;
+		color: white;
+	}
+}
