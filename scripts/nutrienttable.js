@@ -1,11 +1,9 @@
-var data;
+// Requires nutrientDataManager.js
+
 var secondsBetweenSave = 5;
 
 window.onload = function() {
-	loadFromLocalStorage();
-	if (data === null) {
-		loadFromFile("../json/emptyData.json");
-	}
+	loadData();	// Defined in nutrientDataManager.js
 	buildTable();
 	showNutrientFilters();
 	addFilterListeners();
@@ -13,7 +11,7 @@ window.onload = function() {
 
 // We could also have it save when a textarea changes or something
 setInterval(function() {
-	saveToLocalStorage();
+	saveTable();
 }, secondsBetweenSave * 1000);
 
 // Rebuilds the entire table from data and puts it in the table block div
@@ -48,22 +46,9 @@ function buildTable()
 	document.getElementById("tableBlock").innerHTML = table;
 }
 
-function loadFromFile(filepath)
+function saveTable()
 {
-	var xmlhttp = new XMLHttpRequest();
-	
-	xmlhttp.onreadystatechange = function() {
-		if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-			data = JSON.parse(xmlhttp.responseText);
-		}
-	}
-
-	xmlhttp.open("GET", filepath, true);
-	xmlhttp.send();
-}
-
-function saveToLocalStorage()
-{
+	// Update data object
 	for (var key in data) {
 		var cleanName = key.replace(" ", "_");
 		var nutrient = data[key];
@@ -72,12 +57,7 @@ function saveToLocalStorage()
 		nutrient["Toxicity Symptoms"] = document.getElementById(cleanName + "_TSymptoms").value;
 		nutrient["Food Sources"] = document.getElementById(cleanName + "_Sources").value;
 	}
-	localStorage.setItem('nutrientTableData', JSON.stringify(data));
-}
-
-function loadFromLocalStorage()
-{
-	data = JSON.parse(localStorage.getItem('nutrientTableData'));
+	saveToLocalStorage();	// Defined in nutrientDataManager.js
 }
 
 function showNutrientFilters()
@@ -109,10 +89,10 @@ function applyFilters()
 		var displayMode = document.getElementById(c + "Checkbox").checked ? "table-cell" : "none";
 		
 		// column header
-		cells = document.querySelector("#nutrientTable th:nth-child(" + parseInt(i + 2) + ")").style.display = displayMode;
+		var cells = document.querySelector("#nutrientTable th:nth-child(" + parseInt(i + 2) + ")").style.display = displayMode;
 		
 		// column cells
-		var cells = document.querySelectorAll("#nutrientTable td:nth-child(" + parseInt(i + 2) + ")");
+		cells = document.querySelectorAll("#nutrientTable td:nth-child(" + parseInt(i + 2) + ")");
 		for (var j = 0; j < cells.length; j++) {
 			cells[j].style.display = displayMode;
 		}
