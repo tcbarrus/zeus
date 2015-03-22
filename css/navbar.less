@@ -2,7 +2,7 @@
 	width:100%;
 	height:50px;
 	border-bottom: 1px solid white;
-	background:-webkit-linear-gradient(left, #3f9db6, #6ab067);
+	background: -webkit-linear-gradient(left, @blue, @green);
 	box-shadow:#aaa 0px 2px 5px;
 	position:fixed;
 	top: 0px;
@@ -41,6 +41,8 @@
 				li{
 					margin:0px;
 					padding:0px 20px;
+					position: relative;
+					z-index: 5;
 
 					a{
 						display:block;
@@ -48,7 +50,7 @@
 				}
 
 				li:hover{
-					background-color: #f6801e;
+					background-color: @orange;
 				}
 			}
 		}
@@ -56,7 +58,7 @@
 		li:hover{
 			ul{
 				display: block;
-				background-color: #4c4c4c;
+				background-color: @grey-drk;
 				z-index: 5;
 			}
 
@@ -66,7 +68,7 @@
 				height: 0; 
 				border-left: 10px solid transparent;
 				border-right: 10px solid transparent;	
-				border-bottom: 10px solid #4c4c4c;
+				border-bottom: 10px solid @grey-drk;
 				position: absolute;
 				top: -10px;
 			}
