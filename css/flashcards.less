@@ -1,0 +1,45 @@
+@import "page.less";
+
+#content{
+	#flashcardBlock{
+		float: left;
+		width: 65%;
+
+		#flashcard{
+			height: 400px;
+			overflow: auto;
+			border: 1px solid black;
+			text-align: center;
+
+			h3{
+				line-height: 400px;
+			}
+
+			.flashcard_fact{
+				line-height: 100px;
+			}
+		}
+
+		#buttonPanel{
+			text-align: center;
+			margin-top: 15px;
+
+			a{
+				width: 100px;
+				position: relative;
+				display: inline-block;
+				text-decoration: none;
+				background-color: @blue;
+				.button;
+
+				&:first-child{
+					float: left;
+				}
+
+				&:last-child{
+					float: right;
+				}
+			}
+		}
+	}
+}

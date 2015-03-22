@@ -117,25 +117,6 @@ td{
 	padding: 10px;
 }
 
-#flashcardBlock{
-	float: left;
-	width: 65%;
-}
-
-#flashcard{
-	height: 400px;
-	overflow: auto;
-	border: 1px solid black;
-	text-align: center;
-}
-
-#flashcard h3{
-	line-height: 400px;
-}
-
-#flashcard .flashcard_fact{
-	line-height: 100px;
-}
 
 #flashcardBlock_right{
 	float: left;
@@ -161,28 +142,6 @@ td{
 
 #flashcardBlock_right div a{
 	margin-top: 10px;
-}
-
-#buttonPanel{
-	text-align: center;
-	margin-top: 15px;
-}
-
-#buttonPanel a{
-	width: 100px;
-	position: relative;
-	display: inline-block;
-	border: 1px solid black;
-	text-decoration: none;
-	color: black;
-}
-
-#buttonPanel a:first-child{
-	float: left;
-}
-
-#buttonPanel a:last-child{
-	float: right;
 }
 
 #feedbackBlock{
