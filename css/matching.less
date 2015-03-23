@@ -1,0 +1,53 @@
+//@import "page.less";
+
+#content{
+	#matching{
+		a{
+			display: block;
+			border: 1px solid black;
+			float: right;
+			width: 100px;
+			text-align: center;
+			text-decoration: none;
+		}
+
+		h2{
+			display: inline;
+		}
+
+		.column{
+			border: none;
+
+			&:nth-child(3){
+				border: 1px solid black;
+				height: 507px;
+				margin-top: 5px;
+			}
+
+			.half-column{
+				height: 250px;
+				border: 1px solid black;
+				margin-bottom: 15px;
+
+				strong{
+					display: block;
+					margin: 15px 0 0 15px;
+				}
+
+				.fact{
+					margin-left: 5px;
+				}
+			}
+		}
+
+		.fact{
+			margin-top:5px;
+			width: 95%;
+			border: 1px solid black;
+		}
+
+		.incorrect{
+			background-color: #DDD;
+		}
+	}
+}
