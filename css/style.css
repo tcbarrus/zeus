@@ -117,23 +117,6 @@ td{
 	padding: 10px;
 }
 
-
-#flashcardBlock_right{
-	float: left;
-	width: 30%;
-	margin-left: 3%;
-	margin-top: 35px;
-}
-
-#flashcardBlock_right a{
-	width: 100%;
-	color: black;
-	text-decoration: none;
-	text-align: center;
-	display: block;
-	border: 1px solid black;
-}
-
 #flashcardBlock_right div{
 	border: 1px solid black;
 	margin-top: 10px;
@@ -170,20 +153,20 @@ td{
 	margin-left: 15px;
 }
 
-#matching a{
+/*#matching a{
 	display: block;
 	border: 1px solid black;
 	float: right;
 	width: 100px;
 	text-align: center;
 	text-decoration: none;
-}
+}*/
 
-#matching h2{
+/*#matching h2{
 	display: inline;
-}
+}*/
 
-#matching .column{
+/*#matching .column{
 	border: none;
 }
 
@@ -191,8 +174,8 @@ td{
 	border: 1px solid black;
 	height: 507px;
 	margin-top: 5px;
-}
-
+}*/
+/*
 .column .half_column{
 	height: 250px;
 	border: 1px solid black;
@@ -206,17 +189,17 @@ td{
 
 .half_column .fact{
 	margin-left: 5px;
-}
+}*/
 
-.fact{
+/*.fact{
 	margin-top:5px;
 	width: 95%;
 	border: 1px solid black;
-}
+}*/
 
-.incorrect{
+/*.incorrect{
 	background-color: #DDD;
-}
+}*/
 
 #multipleChoiceBlock li{
 	margin-top: 15px;
