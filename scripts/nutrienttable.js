@@ -3,10 +3,12 @@
 var secondsBetweenSave = 5;
 
 window.onload = function() {
-	loadData();	// Defined in nutrientDataManager.js
-	buildTable();
-	showNutrientFilters();
-	addFilterListeners();
+	// loadData is defined in nutrientDataManager.js
+	loadData(function() {
+		buildTable();
+		showNutrientFilters();
+		addFilterListeners();
+	});
 }
 
 // We could also have it save when a textarea changes or something
