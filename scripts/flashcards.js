@@ -25,7 +25,8 @@ function generateFlashcards() {
 			if (back != "" && back.toLowerCase() != "none") {
 				flashcards.push({
 					"front": front,
-					"back": back
+					"back": back,
+					"seen": false,
 				});
 			}
 		}
@@ -43,14 +44,23 @@ function attachListeners() {
 	document.getElementById("flipButton").addEventListener("click", function() {
 		flipFlashcard();
 	});
+	document.getElementById("restartButton").addEventListener("click", function() {
+		restartFlashcards();
+	});
+	document.getElementById("yesButton").addEventListener("click", function() {
+		markCorrect(true);
+	});
+	document.getElementById("noButton").addEventListener("click", function() {
+		markCorrect(false);
+	})
 	document.onkeydown = function(event) {
 		var key = event.keyCode ? event.keyCode : event.which;
 
-		if (key == 37)
+		if (key == 37) // Left
 			previousFlashcard();
-		else if (key == 39)
+		else if (key == 39) // Right
 			nextFlashcard();
-		else if (key == 38 || key == 40) {
+		else if (key == 38 || key == 40) { // Up and down
 			flipFlashcard();
 			// Prevent scrolling:
 			event.preventDefault();
@@ -80,12 +90,61 @@ function flipFlashcard() {
 	updateView();
 }
 
+function markCorrect(correct) {
+	flashcards[currentCard.index]["correct"] = correct;
+	updateView();
+}
+
+function restartFlashcards() {
+	currentCard.index = 0;
+	currentCard.front = defaultToFrontSide;
+	for (var i = 0; i < flashcards.length; i++) {
+		flashcards[i].seen = false;
+		delete flashcards[i].correct;
+	}
+	updateView();
+}
+
 function updateView() {
+	flashcards[currentCard.index].seen = true; // Move to flipFlashcard if "seen" means both sides.
 	updateFlashcardDisplay();
-	// update stats panel
+	updateStatsDisplay();
 }
 
 function updateFlashcardDisplay() {
 	var card = flashcards[currentCard.index];
 	flashcardDiv.innerHTML = currentCard.front ? card["front"] : card["back"];
+}
+
+function updateStatsDisplay() {
+	var stats = calculateStats();
+	document.getElementById("numberSeen").innerHTML = stats.numberSeen;
+	document.getElementById("numberTotal").innerHTML = flashcards.length;
+	document.getElementById("numberCorrect").innerHTML = stats.numberCorrect;
+	document.getElementById("numberTotalGraded").innerHTML = stats.numberTotalGraded;
+	var flipped = currentCard.front != defaultToFrontSide;
+	document.getElementById("gradingPanel").style.visibility = flipped ? "visible" : "hidden";
+}
+
+function calculateStats() {
+	var numberCorrect = 0;
+	var numberTotalGraded = 0;
+	var numberSeen = 0;
+
+	for (var i = 0; i < flashcards.length; i++) {
+		if (flashcards[i].correct !== undefined) {
+			numberTotalGraded++;
+			if (flashcards[i].correct) {
+				numberCorrect++;
+			}
+		}
+		if (flashcards[i].seen) {
+			numberSeen++;
+		}
+	}
+	return {
+		"numberSeen": numberSeen,
+		"numberCorrect": numberCorrect,
+		"numberTotalGraded": numberTotalGraded,
+	};
 }
