@@ -12,9 +12,9 @@ window.onload = function() {
 }
 
 // We could also have it save when a textarea changes or something
-setInterval(function() {
-	saveTable();
-}, secondsBetweenSave * 1000);
+// setInterval(function() {
+// 	saveTable();
+// }, secondsBetweenSave * 1000);
 
 // Rebuilds the entire table from data and puts it in the table block div
 function buildTable()
@@ -36,10 +36,10 @@ function buildTable()
 		var nutrient = data[key];
 		table += "<tr>" +
 			"<td>" + key + "</td>" +
-			"<td><textarea id='" + cleanName + "_Function'>" + nutrient["Function"] + "</textarea></td>" +
-			"<td><textarea id='" + cleanName + "_DSymptoms'>" + nutrient["Deficiency Symptoms"] + "</textarea></td>" +
-			"<td><textarea id='" + cleanName + "_TSymptoms'>" + nutrient["Toxicity Symptoms"] + "</textarea></td>" +
-			"<td><textarea id='" + cleanName + "_Sources'>" + nutrient["Food Sources"] + "</textarea></td>" +
+			"<td><textarea id='" + cleanName + "_Function' oninput=\"saveTable()\">" + nutrient["Function"] + "</textarea></td>" +
+			"<td><textarea id='" + cleanName + "_DSymptoms' oninput=\"saveTable()\">" + nutrient["Deficiency Symptoms"] + "</textarea></td>" +
+			"<td><textarea id='" + cleanName + "_TSymptoms' oninput=\"saveTable()\">" + nutrient["Toxicity Symptoms"] + "</textarea></td>" +
+			"<td><textarea id='" + cleanName + "_Sources' oninput=\"saveTable()\">" + nutrient["Food Sources"] + "</textarea></td>" +
 			"</tr>"
 		var nutrient = data[key];
 	}
