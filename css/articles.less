@@ -1,0 +1,62 @@
+@import "page.less";
+
+#article-view {
+	height: ~"calc(100% - 80px)";
+	width: 960px;
+	position: absolute;
+
+	#pdf-view {
+		width: 65%;
+		height: 100%;
+		float: left;
+		
+		iframe {
+			width: 100%;
+			height: ~"calc(100% - 55px)";
+			border: 1px solid @grey-drk;
+		}
+	}
+
+	#note-view {
+		width: 32%;
+		height: 100%;
+		float: right;
+
+		#note-block {
+			height: ~"calc(100% - 55px)";
+			width: 100%;
+			padding: 10px;
+			box-sizing: border-box;
+			border: 1px solid @grey-drk;
+			resize: none;
+			outline: none;
+		}
+	}
+
+}
+
+.column {
+	float:left;
+	width: 300px;
+	min-height: 500px;
+	margin: 0 4px;
+	padding: 5px;
+
+	a {
+		display: block;
+		text-decoration: none;
+		padding:10px;
+		margin-bottom:3px;
+		background-color: #e6e6e6;
+		color: #4c4c4c;
+
+		text-overflow: ellipsis;
+		overflow: hidden;
+		white-space: nowrap;
+	}
+
+	a:hover {
+		background-color: @orange;
+		color: white;
+	}
+}

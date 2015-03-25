@@ -3,11 +3,12 @@
 <head>
 	<title>NDFS 100</title>
 	<link type="text/css" rel="stylesheet" href="../css/style.css" />
-	<link type="text/css" rel="stylesheet/less" href="../css/page.less"/>
+	<link type="text/css" rel="stylesheet/less" href="../css/articles.less"/>
 	<script src="../scripts/less.js-2.3.1/dist/less.min.js" type="text/javascript"></script>
+	<script src="../scripts/articleView.js" type="text/javascript"></script>
 	<link href='http://fonts.googleapis.com/css?family=Roboto:400,700,500' rel='stylesheet' type='text/css'>
 </head>
-<body>
+<body onload="loadPageData()">
 	<div id="navBar">
 		<div class="wrapper">
 			<ul>
@@ -30,17 +31,14 @@
 	</div>
 	<div class="wrapper">
 		<div id="content">
-			<div id="articleView">
-				<strong>Article X</strong>
-				<div class="articleBlock">
-					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut id orci sit amet magna consectetur scelerisque. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Morbi gravida magna at libero congue, in pretium ligula consectetur. Integer blandit quam at neque convallis volutpat. Quisque pharetra, dolor sed malesuada fermentum, nisi ligula dictum lorem, in pellentesque arcu neque nec enim. Maecenas tempor neque lectus, sit amet lobortis dui laoreet laoreet. Curabitur quis lorem at turpis cursus imperdiet eu a velit.</p>
-					<p>Mauris non sem nibh. Aliquam ut tempor tellus. Vivamus luctus rutrum augue eget hendrerit. Ut ut lectus vel nibh pulvinar aliquam. Etiam elementum elit at imperdiet aliquam. Maecenas semper laoreet consequat. In euismod ligula quis pharetra dignissim. Ut vitae elementum turpis. In ipsum arcu, sodales ut</p>
+			<div id="article-view">
+				<div id="pdf-view">
+					<h2 id="article-title"><strong>Article X</strong></h2>
+					<iframe id="pdf" src="" type="application/pdf"></iframe>
 				</div>
-			</div>
-			<div id="noteView">
-				<strong>Notes</strong>
-				<div class="articleBlock">
-
+				<div id="note-view">
+					<h2><strong>Notes</strong></h2>
+					<textarea id="note-block" placeholder="Click here and begin typing to add notes..."></textarea>
 				</div>
 			</div>
 		</div>
