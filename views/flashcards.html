@@ -6,6 +6,9 @@
 	<link type="text/css" rel="stylesheet/less" href="../css/flashcards.less"/>
 	<script src="../scripts/less.js-2.3.1/dist/less.min.js" type="text/javascript"></script>
 	<link href='http://fonts.googleapis.com/css?family=Roboto:400,700,500' rel='stylesheet' type='text/css'>
+
+	<script src="../scripts/nutrientDataManager.js" type="text/javascript"></script>
+	<script src="../scripts/flashcards.js" type="text/javascript"></script>
 </head>
 <body>
 	<div id="navBar">
@@ -33,21 +36,25 @@
 				<h2>Flash Cards</h2>
 				<div id="flashcard">
 					<h3>Foods Vitamin C is Found in</h3>
+					<div id="gradingPanel">
+						<p>Were you correct?</p>
+						<a id="yesButton">Yes</a><a id="noButton">No</a>
+					</div>
 				</div>
 				<div id="buttonPanel">
-					<a>&laquo;</a>
-					<a href="flashcards_flip.html"</a>Flip Card</a>
-					<a>&raquo;</a>
+					<a id="previousButton">&laquo;</a>
+					<a id="flipButton">Flip Card</a>
+					<a id="nextButton">&raquo;</a>
 				</div>
 			</div>
 			<div id="flashcardBlock_right">
 				<a href="flashcards_settings.html">Settings</a>
 				<div>
-					Seen: 14/20<br>
+					Seen: <span id="numberSeen"></span>/<span id="numberTotal"></span><br>
 					<br>
-					Correct: 10/20<br>
+					Correct: <span id="numberCorrect"></span>/<span id="numberTotalGraded"></span><br>
 					<br>
-					<a>Restart</a>
+					<a id="restartButton">Restart</a>
 				</div>
 			</div>
 		</div>
