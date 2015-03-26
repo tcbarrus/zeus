@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel="stylesheet" type="text/css" href="../css/style.css">
+	<link href='http://fonts.googleapis.com/css?family=Roboto:400,700,500' rel='stylesheet' type='text/css'>
+	<script src="../js/generic_settings_modal.js"></script>
+</head>
+	<body>
+		<div id = "background" onclick="hideModal()"></div>
+		<div id="popUp" onclick="showModal()">CLICK HERE!</div>
+		<div id = "settings-block">
+			<div id="upper-div">
+				<div id = "title-text">Flashcard Options</div>
+				<div id="exit-button" onclick="hideModal()">X</div>
+			</div>
+			<div id = "settings-container">
+				<div id = "filters-container">
+					Filters<br/>
+					<div class="tinyText">(only see the selected topics in your flashcards)</div>
+					<div id = "nutrients">
+						<u>Nutrients</u><br/>
+						<input type="checkbox" name="nutrients" value="vitaminA" class="box">Vitamin A<br>
+						<input type="checkbox" name="nutrients" value="vitaminD" class="box">Vitamin D<br>
+						<input type="checkbox" name="nutrients" value="vitaminK" class="box">Vitamin K<br>
+						<input type="checkbox" name="nutrients" value="vitaminC" class="box">Vitamin C<br>
+						<input type="checkbox" name="nutrients" value="thiamin" class="box">Thiamin<br>
+						<input type="checkbox" name="nutrients" value="riboflavin" class="box">Riboflavin<br>
+						<input type="checkbox" name="nutrients" value="niacin" class="box">Niacin<br>
+						<input type="checkbox" name="nutrients" value="folate" class="box">Folate<br>
+						<input type="checkbox" name="nutrients" value="vitaminB12" class="box">Vitamin B12<br>
+						<input type="checkbox" name="nutrients" value="calcium" class="box">Calcium<br>
+						<input type="checkbox" name="nutrients" value="magnesium" class="box">Magnesium<br>
+						<input type="checkbox" name="nutrients" value="sodium" class="box">Sodium<br>
+						<input type="checkbox" name="nutrients" value="potassium" class="box">Potassium<br>
+						<input type="checkbox" name="nutrients" value="iron" class="box">Iron<br>
+						<input type="checkbox" name="nutrients" value="zinc" class="box">Zinc<br>
+						<input type="checkbox" name="nutrients" value="fluoride" class="box">Fluoride<br>
+						<input type="checkbox" name="nutrients" value="selenium" class="box">Selenium<br>
+						<u>Categories</u><br/>
+						<input type="checkbox" name="category" value="function" class="box">Function<br>
+						<input type="checkbox" name="category" value="deficiency" class="box">Deficiency Symptoms/Disease<br>
+						<input type="checkbox" name="category" value="toxicity" class="box">Toxicity Symptoms<br>
+						<input type="checkbox" name="category" value="foods" class="box">Food Sources<br>
+					</div>
+				</div>
+				<div id = "options-container">
+					Options<br/><br/>
+					<div id="options">
+						<input type="checkbox" name="option" value="seeFront" class="box">See front of flashcards first<br>
+						<input type="checkbox" name="option" value="randomize" class="box">Randomize flashcards' order<br>
+						<input type="checkbox" name="option" value="missed" class="box">See only cards I miss most<br>
+						<input type="checkbox" name="option" value="Collect statistics" class="box">Collect statistic<br>
+					</div>
+				</div>
+				<div id = "button-container">
+					<div class = "button" onclick="">Save
+					</div>
+					<div class = "button" onclick="hideModal()">Cancel</div>
+						<div id="tinyButton-container">
+							<div class="tinyButton" onclick="">Select All</div>
+							<div class="tinyButton" onclick="">Clear All</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+
+	</body>
+</html>
