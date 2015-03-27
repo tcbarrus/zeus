@@ -28,28 +28,6 @@
 	filter: blur(10px);
 }
 
-#tableBlock{
-	float: left;
-	margin-right: 20px;
-	margin-top: 18px;
-	width:650px;
-}
-
-td{
-	height: 100px;
-	width: 110px;
-}
-
-#filterBlock{
-	width: 290px;
-	float: left;
-}
-
-#filterBlock div{
-	border: 1px solid black;
-	padding: 10px;
-}
-
 #flashcardBlock_right div{
 	border: 1px solid black;
 	margin-top: 10px;

@@ -4,8 +4,13 @@
 	<title>NDFS 100</title>
 	<link type="text/css" rel="stylesheet" href="../css/style.css" />
 	<link type="text/css" rel="stylesheet/less" href="../css/page.less"/>
+	<link rel="stylesheet" type="text/css" href="../css/settings_modal.less"> -->
+	<link rel="stylesheet" type="text/css" href="../css/multipleChoice.less">
 	<script src="../scripts/less.js-2.3.1/dist/less.min.js" type="text/javascript"></script>
 	<link href='http://fonts.googleapis.com/css?family=Roboto:400,700,500' rel='stylesheet' type='text/css'>
+
+	<script type="text/javascript" src="../scripts/nutrientDataManager.js"></script>
+	<script type="text/javascript" src="../scripts/multipleChoice.js"></script>
 </head>
 <body>
 	<div id="navBar">
@@ -33,34 +38,68 @@
 			<h2>Multiple Choice</h2>
 			<div id="multipleChoiceBlock">
 				<div id="buttons">
-					<a href="multipleChoice.html">New Test</a>
-					<a href="multipleChoice_feedback.html">Submit</a>
+					<a class="button" onclick="showModal()">New Test</a>
 				</div>
-				<ol>
-					<li>
-						Question<br>
-						<input type="radio" />Option 1<br>
-						<input type="radio" />Option 2<br>
-						<input type="radio" />Option 3<br>
-						<input type="radio" />Option 4<br>
-					</li>
-					<li>
-						Question<br>
-						<input type="radio" />Option 1<br>
-						<input type="radio" />Option 2<br>
-						<input type="radio" />Option 3<br>
-						<input type="radio" />Option 4<br>
-					</li>
-					<li>
-						Question<br>
-						<input type="radio" />Option 1<br>
-						<input type="radio" />Option 2<br>
-						<input type="radio" />Option 3<br>
-						<input type="radio" />Option 4<br>
-					</li>
-				</ol>
+				<div id="results"></div>
+				<div id="questions"></div>
+				<a id="submitButton" class="button">Submit</a>
 			</div>
 		</div>
 	</div>
+
+	<div id = "settings-block">
+			<div id="upper-div">
+				<div id = "title-text">New Multiple Choice Test</div>
+				<div id="exit-button" onclick="hideModal()">X</div>
+			</div>
+			<div id = "settings-container">
+				<div id = "filters-container">
+					Filters<br/>
+					<div class="tinyText">(only see the selected topics in your flashcards)</div>
+					<div id = "nutrients">
+						<u>Nutrients</u><br/>
+						<input type="checkbox" name="nutrients" value="vitaminA" class="box">Vitamin A<br>
+						<input type="checkbox" name="nutrients" value="vitaminD" class="box">Vitamin D<br>
+						<input type="checkbox" name="nutrients" value="vitaminK" class="box">Vitamin K<br>
+						<input type="checkbox" name="nutrients" value="vitaminC" class="box">Vitamin C<br>
+						<input type="checkbox" name="nutrients" value="thiamin" class="box">Thiamin<br>
+						<input type="checkbox" name="nutrients" value="riboflavin" class="box">Riboflavin<br>
+						<input type="checkbox" name="nutrients" value="niacin" class="box">Niacin<br>
+						<input type="checkbox" name="nutrients" value="folate" class="box">Folate<br>
+						<input type="checkbox" name="nutrients" value="vitaminB12" class="box">Vitamin B12<br>
+						<input type="checkbox" name="nutrients" value="calcium" class="box">Calcium<br>
+						<input type="checkbox" name="nutrients" value="magnesium" class="box">Magnesium<br>
+						<input type="checkbox" name="nutrients" value="sodium" class="box">Sodium<br>
+						<input type="checkbox" name="nutrients" value="potassium" class="box">Potassium<br>
+						<input type="checkbox" name="nutrients" value="iron" class="box">Iron<br>
+						<input type="checkbox" name="nutrients" value="zinc" class="box">Zinc<br>
+						<input type="checkbox" name="nutrients" value="fluoride" class="box">Fluoride<br>
+						<input type="checkbox" name="nutrients" value="selenium" class="box">Selenium<br>
+						<u>Categories</u><br/>
+						<input type="checkbox" name="category" value="function" class="box">Function<br>
+						<input type="checkbox" name="category" value="deficiency" class="box">Deficiency Symptoms/Disease<br>
+						<input type="checkbox" name="category" value="toxicity" class="box">Toxicity Symptoms<br>
+						<input type="checkbox" name="category" value="foods" class="box">Food Sources<br>
+					</div>
+				</div>
+				<div id = "options-container">
+					Options<br/><br/>
+					<div id="options">
+						<input type="checkbox" name="option" value="correct" class="box">Correct answers instantly<br>
+						<input type="checkbox" name="option" value="timer" class="box">Time myself<br>
+					</div>
+				</div>
+				<div id = "button-container">
+					<div class = "button" onclick="">Save
+					</div>
+					<div class = "button" onclick="hideModal()">Cancel</div>
+						<div id="tinyButton-container">
+							<div class="tinyButton" onclick="checkAll('nutrients', true)">Select All</div>
+							<div class="tinyButton" onclick="checkAll('nutrients', false)">Clear All</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div id="shadow" onclick="hideModal()"></div>
 </body>
 </html>

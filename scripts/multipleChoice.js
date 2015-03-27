@@ -6,7 +6,7 @@ window.onload = function() {
 	// loadData is defined in nutrientDataManager.js
 	loadData(function() {
 		generateQuestions();
-		updateView();
+		updateQuestionsView();
 		attachListeners();
 	});
 }
@@ -68,7 +68,7 @@ function createNutrientAnswers(correctNutrient) {
 	}
 }
 
-function updateView() {
+function updateQuestionsView() {
 	var questionsDiv = document.getElementById("questions");
 	var questionsContent = "<ol>";
 	for (var i = 0; i < questions.length; i++) {
@@ -77,7 +77,9 @@ function updateView() {
 		questionsContent += q.question + "<br>";
 		for (var j = 0; j < q.answers.length; j++) {
 			var a = q.answers[j];
-			questionsContent += "<input type='radio' name='q-" + i + "' value='a-" + j + "' />" + a + "<br>";
+			var radioId = "q" + i + "a" + j;
+			questionsContent += "<input id='" + radioId + "'type='radio' name='q-" + i + "' value='a-" + j + "' />";
+			questionsContent += "<label for='" + radioId + "'>" + a + "</label><br>";
 		}
 		questionsContent += "</li>";
 	}
@@ -86,61 +88,77 @@ function updateView() {
 }
 
 function gradeQuestions() {
-	var correct = 0;
+	var numCorrect = 0;
 	for (var i = 0; i < questions.length; i++) {
 		var q = questions[i];
-		var correctAnswerInput = document.querySelector("input[name='q-" + i + "'][value='a-" + q.correctAnswer + "']");
+		var correctId = "q" + i + "a" + q.correctAnswer;
+		var correctAnswerInput = document.getElementById(correctId);
 		var markedAnswerInput = document.querySelector("input[name='q-" + i + "']:checked");
 		if (correctAnswerInput == markedAnswerInput) {
-			correct++;
+			numCorrect++;
 		}
 		else {
 			if (markedAnswerInput != null) {
-				markedAnswerInput.className = "incorrectAnswer";
+				document.querySelector("label[for='" + markedAnswerInput.id + "']").className = "incorrectAnswer";
 			}
 			else {
 				var questionDiv = document.querySelectorAll("#questions li")[i];
 				questionDiv.innerHTML += "<p class='incorrectAnswer'>You didn't answer this question.</p>";
 			}
 		}
-		correctAnswerInput.className = "correctAnswer";
+		document.querySelector("label[for='" + correctAnswerInput.id + "']").className = "correctAnswer";
+		updateResults(numCorrect);
 	}
+}
+
+function updateResults(numCorrect) {
+	var resultsDiv = document.getElementById("results");
+	var percent = +(100 * numCorrect / questions.length).toFixed(2);
+	resultsDiv.innerHTML = "You got " + numCorrect + "/" + questions.length + " (" + percent + "%)" +  " questions correct."
+	resultsDiv.display = "block";
 }
 
 function attachListeners() {
-	/*
-	document.getElementById("previousButton").addEventListener("click", function() {
-		previousFlashcard();
+	document.getElementById("submitButton").addEventListener("click", function() {
+		gradeQuestions();
+		document.getElementById("submitButton").style.display = "none";
+		window.scrollTo(0, 0);
 	});
-	document.getElementById("nextButton").addEventListener("click", function() {
-		nextFlashcard();
-	});
-	document.getElementById("flipButton").addEventListener("click", function() {
-		flipFlashcard();
-	});
-	document.getElementById("restartButton").addEventListener("click", function() {
-		restartFlashcards();
-	});
-	document.getElementById("yesButton").addEventListener("click", function() {
-		markCorrect(true);
-	});
-	document.getElementById("noButton").addEventListener("click", function() {
-		markCorrect(false);
-	})
-	document.onkeydown = function(event) {
-		var key = event.keyCode ? event.keyCode : event.which;
-
-		if (key == 37) // Left
-			previousFlashcard();
-		else if (key == 39) // Right
-			nextFlashcard();
-		else if (key == 38 || key == 40) { // Up and down
-			flipFlashcard();
-			// Prevent scrolling:
-			event.preventDefault();
-			return false;
-		}
-	}
-	*/
 }
 
+
+
+//MULTIPLE CHOICE SETTINGS FUNCTIONS
+function checkAll(ID, checktoggle)
+{
+  var checkboxes = new Array(); 
+  var x = document.getElementById(ID);
+  checkboxes = x.getElementsByTagName('input');
+ 
+  for (var i=0; i<checkboxes.length; i++)  {
+    if (checkboxes[i].type == 'checkbox')   {
+      checkboxes[i].checked = checktoggle;
+    }
+  }
+}
+
+function showModal() {
+	document.getElementById("settings-block").style.visibility = "visible";
+	// document.getElementById("background").className = "blur";
+	//add blurring
+	document.getElementById("shadow").style.visibility = "visible";
+	document.getElementById("content").className = "blur";
+	document.getElementById("navBar").className = "blur";	
+}
+
+function hideModal() {
+	document.getElementById("settings-block").style.visibility = "hidden";
+	// document.getElementById("background").className = "";
+	checkAll('nutrients', false);
+	checkAll('options', false);
+
+	// remove blurring
+	document.getElementById("shadow").style.visibility = "hidden";
+	document.getElementById("content").className = "";
+	document.getElementById("navBar").className = "";
+}
