@@ -115,3 +115,18 @@ function applyFilters()
 		i++;
 	}
 }
+
+function checkAll(ID, checktoggle)
+{
+  var checkboxes = new Array(); 
+  var x = document.getElementById(ID);
+  checkboxes = x.getElementsByTagName('input');
+ 
+  for (var i=0; i<checkboxes.length; i++)  {
+    if (checkboxes[i].type == 'checkbox')   {
+      checkboxes[i].checked = checktoggle;
+    }
+  }
+
+  applyFilters();
+}
