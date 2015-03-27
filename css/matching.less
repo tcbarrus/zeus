@@ -4,11 +4,12 @@
 	#matching{
 		a{
 			display: block;
-			border: 1px solid black;
 			float: right;
 			width: 100px;
 			text-align: center;
 			text-decoration: none;
+			background-color: @green;
+			.button;
 		}
 
 		h2{
@@ -22,16 +23,18 @@
 				border: 1px solid black;
 				height: 507px;
 				margin-top: 5px;
+				background-color: @grey-lgt;
 			}
 
 			.half_column{
 				height: 250px;
-				border: 1px solid black;
 				margin-bottom: 15px;
+				background-color: @blue;
+				color: white;
 
 				strong{
 					display: block;
-					margin: 15px 0 0 15px;
+					padding: 10px;
 				}
 
 				.fact{
@@ -42,8 +45,10 @@
 
 		.fact{
 			margin-top:5px;
+			padding: 5px;
 			width: 95%;
-			border: 1px solid black;
+			background-color: white;
+			.unselectable-text;
 		}
 
 		.incorrect{

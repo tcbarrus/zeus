@@ -4,6 +4,7 @@
 @blue: #3f9db6;
 @green: #6ab067;
 @grey-drk: #4c4c4c;
+@grey-lgt: #e6e6e6;
 @orange: #f6801e;
 
 //Global Mixins
@@ -14,6 +15,19 @@
 	padding: 5px;
 	text-decoration: none;
 	cursor: pointer;
+
+	&:hover{
+		background-color: @orange;
+	}
+}
+
+.unselectable-text{
+	-webkit-touch-callout: none;
+	-webkit-user-select: none;
+	-khtml-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
 }
 
 body {
@@ -44,6 +58,14 @@ body {
 				color: @grey-drk;
 				font-size:15px;
 				line-height:1.5em;
+			}
+
+			.column{
+				float:left;
+				width: 300px;
+				min-height: 500px;
+				margin: 0 4px;
+				padding: 5px;
 			}
 		}
 	}
