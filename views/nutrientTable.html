@@ -33,15 +33,16 @@
 	<div class="wrapper">
 		<div id="content">
 			<div id="tableBlock">
-				
+				<!-- table will be filled in here from javascript -->
 			</div>
 			<div id="filterBlock">
 				<h2>Filters</h2>
 				<p>(only see the selected topics in the table)</p>
 				<div id="filter-container">
 					<strong>Nutrients</strong><br>
-					<div id="nutrientCheckboxes" class="filters"></div>
-
+					<div id="nutrientCheckboxes" class="filters">
+						<!-- nutrient filters are filled in here from javascript -->
+					</div>
 					<strong>Category</strong><br>
 					<div class="filters">
 						<input type="checkbox" id="functionCheckbox" checked/>Function<br>
@@ -49,6 +50,10 @@
 						<input type="checkbox" id="tSymptomsCheckbox" checked/>Toxicity Symptoms<br>
 						<input type="checkbox" id="sourcesCheckbox" checked/>Food Sources<br>
 					</div>
+				</div>
+				<div id="button-container">
+					<div class="tinyButton" onclick="checkAll('filter-container', true)">Select All</div>
+					<div class="tinyButton" onclick="checkAll('filter-container', false)">Clear All</div>
 				</div>
 			</div>
 		</div>
