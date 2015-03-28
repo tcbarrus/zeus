@@ -2,8 +2,8 @@
 <html>
 <head>
 	<title>NDFS 100</title>
-	<!--<link type="text/css" rel="stylesheet" href="../css/style.css" />-->
 	<link type="text/css" rel="stylesheet/less" href="../css/matching.less"/>
+	<script src="../scripts/matching.js" type="text/javascript"></script>
 	<script src="../scripts/less.js-2.3.1/dist/less.min.js" type="text/javascript"></script>
 	<link href='http://fonts.googleapis.com/css?family=Roboto:400,700,500' rel='stylesheet' type='text/css'>
 	<link rel="stylesheet" type="text/css" href="../css/page.less">
@@ -40,25 +40,25 @@
 					<a onclick="showModal()">New Game</a>
 				</div>
 				<div class="column">
-					<div class="half_column">
+					<div class="half_column" ondragover="allowDrop(event)" ondrop="drop(event)">
 						<strong>Vitamin C</strong>
 					</div>
-					<div class="half_column">
+					<div class="half_column" ondragover="allowDrop(event)" ondrop="drop(event)">
 						<strong>Thiamin</strong>
 					</div>
 				</div>
 				<div class="column">
-					<div class="fact">Fact</div>
-					<div class="fact">Fact</div>
-					<div class="fact">Fact</div>
-					<div class="fact">Fact</div>
-					<div class="fact">Fact</div>
+					<div class="fact" id="test" draggable="true" ondragstart="drag(event)">Fact</div>
+					<div class="fact" draggable="true" ondragstart="drag(event)">Fact</div>
+					<div class="fact" draggable="true" ondragstart="drag(event)">Fact</div>
+					<div class="fact" draggable="true" ondragstart="drag(event)">Fact</div>
+					<div class="fact" draggable="true" ondragstart="drag(event)">Fact</div>
 				</div>
 				<div class="column">
-					<div class="half_column">
+					<div class="half_column" ondragover="allowDrop(event)" ondrop="drop(event)">
 						<strong>Calcium</strong>
 					</div>
-					<div class="half_column">
+					<div class="half_column" ondragover="allowDrop(event)" ondrop="drop(event)">
 						<strong>Zinc</strong>
 					</div>
 				</div>
