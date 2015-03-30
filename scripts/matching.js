@@ -10,4 +10,7 @@ function drag(e){
 
 function allowDrop(e){
 	e.preventDefault();
+	if(e.target.getAttribute("draggable") == true || e.target.tagName == "STRONG"){
+		e.dataTransfer.dropEffect = "none";
+	}
 }
