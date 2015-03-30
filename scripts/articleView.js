@@ -7,7 +7,7 @@ var humanTitles = {
 	"Perfection.pdf": "Seeking Perfection Without Being a Perfectionist",
 	"Vitamins.pdf": "Vitamins and Supplements: 10 dangers that may surprise you",
 	"Medicine.pdf": "National Center for Complementary and Alternative Medicine",
-	"Feeding.pdf": "Ellyn Satter's Division or Responsibility in Feeding",
+	"Feeding.pdf": "Ellyn Satter's Division of Responsibility in Feeding",
 	"BMI.pdf": "Body Mass Index",
 	"Diets.pdf": "Evaluate These Diets",
 	"Lipids.pdf": "Lipids",

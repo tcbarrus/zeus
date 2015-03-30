@@ -3,16 +3,17 @@
 #content{
 	#flashcardBlock{
 		float: left;
-		width: 65%;
+		width: 66%;
 
 		#flashcard{
 			height: 400px;
 			overflow: auto;
 			border: 1px solid black;
+			background-color: white;
 			text-align: center;
 
 			h3{
-				padding-top: 100px;
+				padding-top: 150px;
 			}
 
 			.flashcard_fact{
@@ -39,11 +40,18 @@
 					float: right;
 				}
 			}
+
+			img {
+				width: 20px;
+				height: 20px;
+				float: right;
+				margin: 1px 6px 0 0;
+			}
 		}
 	}
 
 	#flashcardBlock_right{
-		float: left;
+		float: right;
 		width: 30%;
 		margin-left: 3%;
 		margin-top: 49px;
@@ -52,6 +60,32 @@
 			background-color: @green;
 			display: block;
 			.button
+
+
+		}
+
+		#popUp {
+			padding-left: 33px; // center the "settings" text in the button
+		}
+
+		img {
+			width: 22px;
+			height: 22px;
+			float: right;
+			margin: -2px 5px 0 0;
+		}
+
+		#stats {
+			border: 1px solid @grey-lgt;
+			margin-top: 40px;
+			padding: 15px;
+			text-align: center;
+			background-color: white;
+
+			#restartButton {
+				width: 50%;
+				margin: 0 auto;
+			}
 		}
 	}
 }

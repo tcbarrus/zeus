@@ -28,16 +28,6 @@
 	filter: blur(10px);
 }
 
-#flashcardBlock_right div{
-	border: 1px solid black;
-	margin-top: 10px;
-	padding: 15px;
-}
-
-#flashcardBlock_right div a{
-	margin-top: 10px;
-}
-
 #feedbackBlock{
 	position: absolute;
 	bottom: 0;
