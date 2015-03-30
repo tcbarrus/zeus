@@ -2,6 +2,11 @@
 var questions = [];
 var correctImmediately = true;
 
+var timerText,
+seconds = 0, minutes = 0, hours = 0,
+t;
+
+
 window.onload = function() {
 	// loadData is defined in nutrientDataManager.js
 	loadData(function() {
@@ -85,7 +90,34 @@ function updateQuestionsView() {
 	}
 	questionsContent += "</ol>";
 	questionsDiv.innerHTML = questionsContent;
+
+	// start the timer
+	timerText = document.getElementById('timer');
+	timer();	
 }
+
+
+
+
+function add() {
+	seconds++;
+	if (seconds >= 60) {
+		seconds = 0;
+		minutes++;
+		if (minutes >= 60) {
+			minutes = 0;
+			hours++;
+		}
+	}
+
+	timerText.textContent = "Time: " + (hours ? (hours > 9 ? hours : "0" + hours) : "00") + ":" + (minutes ? (minutes > 9 ? minutes : "0" + minutes) : "00") + ":" + (seconds > 9 ? seconds : "0" + seconds);
+	timer();
+}
+
+function timer() {
+	t = setTimeout(add, 1000);
+}
+
 
 function gradeQuestions() {
 	var numCorrect = 0;
@@ -119,9 +151,10 @@ function updateResults(numCorrect) {
 }
 
 function attachListeners() {
-	document.getElementById("submitButton").addEventListener("click", function() {
+	document.getElementById("submit-btn").addEventListener("click", function() {
+		clearTimeout(t);
 		gradeQuestions();
-		document.getElementById("submitButton").style.display = "none";
+		document.getElementById("submit-btn").style.display = "none";
 		window.scrollTo(0, 0);
 	});
 }
@@ -131,34 +164,13 @@ function attachListeners() {
 //MULTIPLE CHOICE SETTINGS FUNCTIONS
 function checkAll(ID, checktoggle)
 {
-  var checkboxes = new Array(); 
-  var x = document.getElementById(ID);
-  checkboxes = x.getElementsByTagName('input');
- 
-  for (var i=0; i<checkboxes.length; i++)  {
-    if (checkboxes[i].type == 'checkbox')   {
-      checkboxes[i].checked = checktoggle;
-    }
-  }
-}
+	var checkboxes = new Array(); 
+	var x = document.getElementById(ID);
+	checkboxes = x.getElementsByTagName('input');
 
-function showModal() {
-	document.getElementById("settings-block").style.visibility = "visible";
-	// document.getElementById("background").className = "blur";
-	//add blurring
-	document.getElementById("shadow").style.visibility = "visible";
-	document.getElementById("content").className = "blur";
-	document.getElementById("navBar").className = "blur";	
-}
-
-function hideModal() {
-	document.getElementById("settings-block").style.visibility = "hidden";
-	// document.getElementById("background").className = "";
-	checkAll('nutrients', false);
-	checkAll('options', false);
-
-	// remove blurring
-	document.getElementById("shadow").style.visibility = "hidden";
-	document.getElementById("content").className = "";
-	document.getElementById("navBar").className = "";
+	for (var i=0; i<checkboxes.length; i++)  {
+		if (checkboxes[i].type == 'checkbox')   {
+			checkboxes[i].checked = checktoggle;
+		}
+	}
 }

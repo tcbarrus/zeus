@@ -102,22 +102,7 @@
 	background-color: #DDD;
 }*/
 
-#multipleChoiceBlock li{
-	margin-top: 15px;
-}
 
-#multipleChoiceBlock .incorrect{
-	color: red;
-	background-color: white;
-}
-
-#multipleChoiceBlock .correct{
-	color: green;
-}
-
-#multipleChoiceBlock #buttons{
-	float: right;
-}
 
 #buttons a{
 	display: block;
