@@ -6,6 +6,7 @@
 		width: 66%;
 
 		#flashcard{
+			position: relative;
 			height: 400px;
 			overflow: auto;
 			border: 1px solid @grey-drk;
@@ -13,11 +14,50 @@
 			text-align: center;
 
 			h3{
-				padding-top: 150px;
+				padding: 150px 20px 0 20px;
+				
 			}
 
 			.flashcard_fact{
 				line-height: 100px;
+			}
+
+			#gradingPanel {
+
+				position: absolute;
+				bottom: 0;
+				width: 100%;
+				padding-bottom: 20px;
+
+				#yesButton {
+					width: 50px;
+					height: 50px;
+					display: inline-block;
+					margin-right: 20px;
+					background: url("../images/Right.png");
+					background-size: 50px 50px;
+
+				}
+
+				#yesButton:hover {
+					background: url("../images/RightGrey.png");
+					background-size: 50px 50px;
+
+				}
+
+				#noButton {
+					width: 35px;
+					height: 35px;
+					display: inline-block;
+					background: url("../images/Wrong.png");
+					background-size: 35px 35px;
+					margin-bottom: 5px;
+				}
+
+				#noButton:hover {
+					background: url("../images/WrongGrey.png");
+					background-size: 35px 35px;
+				}
 			}
 		}
 

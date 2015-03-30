@@ -63,9 +63,11 @@ function attachListeners() {
 	});
 	document.getElementById("yesButton").addEventListener("click", function() {
 		markCorrect(true);
+		nextFlashcard();
 	});
 	document.getElementById("noButton").addEventListener("click", function() {
 		markCorrect(false);
+		nextFlashcard();
 	});
 	document.getElementById("saveOptionsButton").addEventListener("click", function() {
 		saveOptions();
