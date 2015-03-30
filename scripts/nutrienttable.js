@@ -11,6 +11,14 @@ window.onload = function() {
 	});
 }
 
+function loadEmptyData() {
+	loadFromFile("../json/emptyData.json");
+}
+
+function loadFullData() {
+	loadFromFile("../json/data.json");
+}
+
 // We could also have it save when a textarea changes or something
 // setInterval(function() {
 // 	saveTable();

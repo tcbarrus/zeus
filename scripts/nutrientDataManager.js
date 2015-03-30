@@ -11,12 +11,11 @@ function loadData(onLoadFunction) {
 	}
 	else if (data == null) {
 		loadFromFile("../json/emptyData.json");
-		saveToLocalStorage();
 	}
 }
 
 // Use a pre-defined data file instead. (../json/data.json contains full data)
-function loadFromFile(filepath, onLoadFunction)
+function loadFromFile(filepath)
 {
 	var xmlhttp = new XMLHttpRequest();
 	
@@ -27,6 +26,7 @@ function loadFromFile(filepath, onLoadFunction)
 			if (onDataLoad) {
 				onDataLoad();
 			}
+			saveToLocalStorage();
 		}
 	}
 
