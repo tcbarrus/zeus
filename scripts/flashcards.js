@@ -1,8 +1,12 @@
 // Requires nutrientDataManager.js
 var flashcards = [];
+var nutrientFilters = []; // Don't show these nutrients
+var categoryFilters = []; // Don't show these categories
 var flashcardDiv;
 var currentCard = {"index": 0, "front": true};
 var defaultToFrontSide = true;
+var displayStatistics = true;
+var randomizeOrder = true;
 
 window.onload = function() {
 	flashcardDiv = document.querySelector("#flashcard h3");
@@ -15,11 +19,18 @@ window.onload = function() {
 }
 
 function generateFlashcards() {
+	flashcards = [];
 	var categories = ["Function", "Deficiency Symptoms", "Toxicity Symptoms", "Food Sources"];
 	for (var key in data) {
+		if (nutrientFilters.indexOf(key.replace(" ", "_")) != -1) {
+			continue;
+		}
 		var nutrient = data[key];
 		for (var i = 0; i < categories.length; i++) {
 			var category = categories[i];
+			if (categoryFilters.indexOf(category.replace(" ", "_")) != -1) {
+				continue;
+			}
 			var front = key + " &mdash; " + category;
 			var back = nutrient[category];
 			if (back != "" && back.toLowerCase() != "none") {
@@ -31,7 +42,10 @@ function generateFlashcards() {
 			}
 		}
 	}
-	// TODO: randomize
+	
+	if (randomizeOrder) {
+		// TODO: randomize
+	}
 }
 
 function attachListeners() {
@@ -52,7 +66,11 @@ function attachListeners() {
 	});
 	document.getElementById("noButton").addEventListener("click", function() {
 		markCorrect(false);
-	})
+	});
+	document.getElementById("saveOptionsButton").addEventListener("click", function() {
+		saveOptions();
+		hideModal();
+	});
 	document.onkeydown = function(event) {
 		var key = event.keyCode ? event.keyCode : event.which;
 
@@ -117,11 +135,17 @@ function updateFlashcardDisplay() {
 }
 
 function updateStatsDisplay() {
-	var stats = calculateStats();
-	document.getElementById("numberSeen").innerHTML = stats.numberSeen;
-	document.getElementById("numberTotal").innerHTML = flashcards.length;
-	document.getElementById("numberCorrect").innerHTML = stats.numberCorrect;
-	document.getElementById("numberTotalGraded").innerHTML = stats.numberTotalGraded;
+	if (displayStatistics) {
+		var stats = calculateStats();
+		document.getElementById("stats").style.display = "block";
+		document.getElementById("numberSeen").innerHTML = stats.numberSeen;
+		document.getElementById("numberTotal").innerHTML = flashcards.length;
+		document.getElementById("numberCorrect").innerHTML = stats.numberCorrect;
+		document.getElementById("numberTotalGraded").innerHTML = stats.numberTotalGraded;
+	} 
+	else {
+		document.getElementById("stats").style.display = "none";
+	}
 	var flipped = currentCard.front != defaultToFrontSide;
 	document.getElementById("gradingPanel").style.visibility = flipped ? "visible" : "hidden";
 }
@@ -150,6 +174,31 @@ function calculateStats() {
 }
 
 //SETTINGS FUNCTIONS
+function saveOptions() {
+	// Update nutrient filter
+	nutrientFilters = [];
+	var uncheckedNutrientsInputs = document.querySelectorAll("input[name='nutrients']:not(:checked)");
+	for (var i = 0; i < uncheckedNutrientsInputs.length; i++) {
+		nutrientFilters.push(uncheckedNutrientsInputs[i].value);
+	}
+
+	// Update category filter
+	categoryFilters = [];
+	var uncheckedCategoriesInputs = document.querySelectorAll("input[name='category']:not(:checked)");
+	for (var i = 0; i < uncheckedCategoriesInputs.length; i++) {
+		categoryFilters.push(uncheckedCategoriesInputs[i].value);
+	}
+	
+	// Update options
+	defaultToFrontSide = document.querySelector("input[name='option'][value='seeFront']").checked;
+	randomizeOrder = document.querySelector("input[name='option'][value='randomizeOrder']").checked;
+	displayStatistics = document.querySelector("input[name='option'][value='displayStatistics']").checked;
+
+	// Rebuild
+	generateFlashcards();
+	restartFlashcards();
+}
+
 function checkAll(ID, checktoggle)
 {
   var checkboxes = new Array(); 
@@ -175,9 +224,7 @@ function showModal() {
 function hideModal() {
 	document.getElementById("settings-block").style.visibility = "hidden";
 	// document.getElementById("background").className = "";
-	checkAll('nutrients', false);
-	checkAll('options', false);
-
+	
 	// remove blurring
 	document.getElementById("shadow").style.visibility = "hidden";
 	document.getElementById("content").className = "";
