@@ -43,7 +43,6 @@
 
 .column {
 	a {
-		display: block;
 		text-decoration: none;
 		padding:10px;
 		margin-bottom:3px;
@@ -51,8 +50,22 @@
 		color: #4c4c4c;
 	}
 
+	a:not(.button) {
+		display:block;
+	}
+	
 	a:hover {
 		background-color: @orange;
 		color: white;
+	}
+
+
+	input {
+		display:block;
+		width:~"calc((100% - 20px))";
+		padding:10px;
+		margin:10px 0px;
+		border-radius:5px;
+		border:solid 1px @grey-drk;
 	}
 }

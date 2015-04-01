@@ -21,6 +21,19 @@
 	}
 }
 
+.button.danger {
+	background-color: @orange;
+	color: white;
+	&:hover {
+		background-color: @grey-drk;
+	}
+}
+
+.button.blue {
+	background-color: @blue;
+	color: white;
+}
+
 .unselectable-text{
 	-webkit-touch-callout: none;
 	-webkit-user-select: none;
@@ -49,8 +62,8 @@ body {
 		#content{
 			margin-top: 80px;
 
-			h2 {
-				color: #4c4c4c;
+			h2, h3 {
+				color: @grey-drk;
 				margin: 10px 0px;
 			}
 
