@@ -2,6 +2,10 @@
 
 #content{
 	#matching{
+		div{
+			margin-bottom: 10px;
+		}
+
 		a{
 			display: block;
 			float: right;
@@ -18,10 +22,16 @@
 
 		.column{
 			border: none;
+			padding: 0;
+			margin: 0 0 0 10px;
+			width: 313px;
+
+			&:nth-child(2){
+				margin: 0;
+			}
 
 			&:nth-child(3){
 				height: 507px;
-				margin-top: 5px;
 				background-color: @grey-lgt;
 			}
 
@@ -38,16 +48,15 @@
 
 				.fact{
 					color: black;
-					margin-left: 5px;
-					width: 93%;
+					margin-left: 5px auto;
 				}
 			}
 		}
 
 		.fact{
-			margin-top:5px;
+			margin:5px auto;
 			padding: 5px;
-			width: 95%;
+			width: 93%;
 			background-color: white;
 			.unselectable-text;
 		}
