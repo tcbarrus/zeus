@@ -25,8 +25,6 @@ function showModal() {
 function hideModal() {
 	document.getElementById("settings-block").style.visibility = "hidden";
 	// document.getElementById("background").className = "";
-	checkAll('nutrients', false);
-	checkAll('options', false);
 
 	// remove blurring
 	document.getElementById("shadow").style.visibility = "hidden";

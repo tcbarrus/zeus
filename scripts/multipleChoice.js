@@ -1,6 +1,9 @@
 // Requires nutrientDataManager.js
+var nutrientFilters = [];
+var categoryFilters = [];
 var questions = [];
-var correctImmediately = true;
+var correctImmediately = false;
+var timeMyself = true;
 
 var timerText,
 seconds = 0, minutes = 0, hours = 0,
@@ -11,17 +14,24 @@ window.onload = function() {
 	// loadData is defined in nutrientDataManager.js
 	loadData(function() {
 		generateQuestions();
-		updateQuestionsView();
+		initView();
 		attachListeners();
 	});
 }
 
 function generateQuestions() {
+	questions = [];
 	var categories = ["Function", "Deficiency Symptoms", "Toxicity Symptoms", "Food Sources"];
 	for (var key in data) {
+		if (nutrientFilters.indexOf(key.replace(" ", "_")) != -1) {
+			continue;
+		}
 		var nutrient = data[key];
 		for (var i = 0; i < categories.length; i++) {
 			var category = categories[i];
+			if (categoryFilters.indexOf(category.replace(" ", "_")) != -1) {
+				continue;
+			}
 			var value = nutrient[category];
 			if (value != "" && value.toLowerCase() != "none") {
 				questions.push(createQuestion(key, category, value));
@@ -73,7 +83,7 @@ function createNutrientAnswers(correctNutrient) {
 	}
 }
 
-function updateQuestionsView() {
+function initView() {
 	var questionsDiv = document.getElementById("questions");
 	var questionsContent = "<ol>";
 	for (var i = 0; i < questions.length; i++) {
@@ -93,11 +103,65 @@ function updateQuestionsView() {
 
 	// start the timer
 	timerText = document.getElementById('timer');
-	timer();	
+	clearInterval(t);
+	seconds = 0;
+	timer();
+
+	// Hide results
+	document.getElementById("results").style.display = "none";
+
+	// Set up the listeners for correcting immediately
+	if (correctImmediately) {
+		document.getElementById("submit-btn").style.display = "none";
+		var inputs = document.querySelectorAll("#questions input");
+		for (var i = 0; i < inputs.length; i++){
+			inputs[i].addEventListener("click", function() {
+				var qId = this.name.split("-")[1];
+				gradeQuestion(qId);
+			});
+		}
+	}
+	else {
+		document.getElementById("submit-btn").style.display = "block";
+	}
+}
+
+function gradeQuestion(index) {
+	var q = questions[index];
+	var correctId = "q" + index+ "a" + q.correctAnswer;
+	var correctAnswerInput = document.getElementById(correctId);
+	var markedAnswerInput = document.querySelector("input[name='q-" + index + "']:checked");
+	
+	if (correctAnswerInput != markedAnswerInput) {
+		if (markedAnswerInput != null) {
+			document.querySelector("label[for='" + markedAnswerInput.id + "']").className = "incorrectAnswer";
+		}
+		else {
+			var questionDiv = document.querySelectorAll("#questions li")[index];
+			questionDiv.innerHTML += "<p class='incorrectAnswer'>You didn't answer this question.</p>";
+		}
+	}
+	document.querySelector("label[for='" + correctAnswerInput.id + "']").className = "correctAnswer";
+	return correctAnswerInput == markedAnswerInput;
 }
 
 
+function gradeQuestions() {
+	var numCorrect = 0;
+	for (var i = 0; i < questions.length; i++) {
+		if (gradeQuestion(i)) {
+			numCorrect++;
+		}
+	}
+	updateResults(numCorrect);
+}
 
+function updateResults(numCorrect) {
+	var resultsDiv = document.getElementById("results");
+	var percent = +(100 * numCorrect / questions.length).toFixed(2);
+	resultsDiv.innerHTML = "You got " + numCorrect + "/" + questions.length + " (" + percent + "%)" +  " questions correct."
+	resultsDiv.style.display = "block";
+}
 
 function add() {
 	seconds++;
@@ -111,43 +175,15 @@ function add() {
 	}
 
 	timerText.textContent = "Time: " + (hours ? (hours > 9 ? hours : "0" + hours) : "00") + ":" + (minutes ? (minutes > 9 ? minutes : "0" + minutes) : "00") + ":" + (seconds > 9 ? seconds : "0" + seconds);
-	timer();
 }
 
 function timer() {
-	t = setTimeout(add, 1000);
-}
-
-
-function gradeQuestions() {
-	var numCorrect = 0;
-	for (var i = 0; i < questions.length; i++) {
-		var q = questions[i];
-		var correctId = "q" + i + "a" + q.correctAnswer;
-		var correctAnswerInput = document.getElementById(correctId);
-		var markedAnswerInput = document.querySelector("input[name='q-" + i + "']:checked");
-		if (correctAnswerInput == markedAnswerInput) {
-			numCorrect++;
-		}
-		else {
-			if (markedAnswerInput != null) {
-				document.querySelector("label[for='" + markedAnswerInput.id + "']").className = "incorrectAnswer";
-			}
-			else {
-				var questionDiv = document.querySelectorAll("#questions li")[i];
-				questionDiv.innerHTML += "<p class='incorrectAnswer'>You didn't answer this question.</p>";
-			}
-		}
-		document.querySelector("label[for='" + correctAnswerInput.id + "']").className = "correctAnswer";
-		updateResults(numCorrect);
+	if (timeMyself) {
+		t = setInterval(add, 1000);
 	}
-}
-
-function updateResults(numCorrect) {
-	var resultsDiv = document.getElementById("results");
-	var percent = +(100 * numCorrect / questions.length).toFixed(2);
-	resultsDiv.innerHTML = "You got " + numCorrect + "/" + questions.length + " (" + percent + "%)" +  " questions correct."
-	resultsDiv.display = "block";
+	else {
+		timerText.textContent = "";
+	}
 }
 
 function attachListeners() {
@@ -157,8 +193,36 @@ function attachListeners() {
 		document.getElementById("submit-btn").style.display = "none";
 		window.scrollTo(0, 0);
 	});
+
+	document.getElementById("newTestButton").addEventListener("click", function() {
+		saveOptions();
+		hideModal();
+	});
 }
 
+function saveOptions() {
+	// Update nutrient filter
+	nutrientFilters = [];
+	var uncheckedNutrientsInputs = document.querySelectorAll("input[name='nutrients']:not(:checked)");
+	for (var i = 0; i < uncheckedNutrientsInputs.length; i++) {
+		nutrientFilters.push(uncheckedNutrientsInputs[i].value);
+	}
+
+	// Update category filter
+	categoryFilters = [];
+	var uncheckedCategoriesInputs = document.querySelectorAll("input[name='category']:not(:checked)");
+	for (var i = 0; i < uncheckedCategoriesInputs.length; i++) {
+		categoryFilters.push(uncheckedCategoriesInputs[i].value);
+	}
+	
+	// Update options
+	timeMyself = document.querySelector("input[name='option'][value='timeMyself']").checked;
+	correctImmediately = document.querySelector("input[name='option'][value='correctImmediately']").checked;
+
+	// Rebuild
+	generateQuestions();
+	initView();
+}
 
 
 //MULTIPLE CHOICE SETTINGS FUNCTIONS
