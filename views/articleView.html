@@ -11,6 +11,21 @@
 	
 </head>
 <body onload="loadPageData()" style="overflow: hidden">
+	
+	<div class="wrapper">
+		<div id="content">
+			<div id="article-view">
+				<div id="pdf-view">
+					<h2 id="article-title"><strong>Article X</strong></h2>
+					<iframe id="pdf" src="" type="application/pdf"></iframe>
+				</div>
+				<div id="note-view">
+					<h2><strong>Notes</strong></h2>
+					<textarea id="note-block" placeholder="Click here and begin typing to add notes..." oninput="saveNote()"></textarea>
+				</div>
+			</div>
+		</div>
+	</div>
 	<div id="navBar">
 		<div class="wrapper">
 			<ul>
@@ -35,20 +50,6 @@
 						</ul>
 					</li>
 				</ul>
-			</div>
-		</div>
-	</div>
-	<div class="wrapper">
-		<div id="content">
-			<div id="article-view">
-				<div id="pdf-view">
-					<h2 id="article-title"><strong>Article X</strong></h2>
-					<iframe id="pdf" src="" type="application/pdf"></iframe>
-				</div>
-				<div id="note-view">
-					<h2><strong>Notes</strong></h2>
-					<textarea id="note-block" placeholder="Click here and begin typing to add notes..." oninput="saveNote()"></textarea>
-				</div>
 			</div>
 		</div>
 	</div>

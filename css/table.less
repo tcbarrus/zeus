@@ -4,7 +4,7 @@
 	float: left;
 	margin-right: 20px;
 	margin-top: 18px;
-	width: 650px;
+	width: 680px;
 	color: #4c4c4c;
 
 	#nutrientTable {
@@ -23,9 +23,9 @@
 	}
 
 	td {
-		height: 110px;
+		height: 150px;
 		padding: 0px;
-		border: 1px solid @grey-drk;
+		border: 1px solid @grey-lgt;
 		background-color: white;
 
 		textarea {
@@ -36,6 +36,7 @@
 			outline: none;
 			box-sizing: border-box;
 			border: none;
+			font-size: 14px;
 		}
 	}
 
@@ -52,43 +53,68 @@
 
 
 #filterBlock{
-	width: 290px;
+	width: 260px;
 	position: fixed;
 	right: ~"calc((100% - 960px) / 2)";
-	color: #4c4c4c;
+	color: @grey-drk;
 
 
 	h2 {
-		margin: 36px 0 0 0 !important; 
+		margin: 15px 0 0 0 !important; 
 	}
 
 	p {
 		margin: 0 0 5px 0;
+		font-size: 14px !important;
+		font-style: italic;
 	}
 
 	#filter-container {
 		background-color: white;
 		border: 1px solid @grey-drk;
 		padding: 10px;
+		font-size: 14px;
 
 		input[type="checkbox"] {
 			margin-right: 15px;
 		}
 
+		.filter-category {
+			margin: 0 10px;
+
+			span {
+				font-weight: bold;
+				float: left;
+			}
+
+			#button-container {
+				.tinyButton {
+					float: right;
+					text-align: left;
+					font-size: 14px;
+					cursor: pointer;
+				}
+
+				.tinyButton:hover {
+					color: @orange;
+				}
+			}
+
+			&:first-of-type {
+				margin-top: 10px;
+
+			}	
+
+			&#last {
+				border-top: 1px solid @grey-lgt;
+				padding-top: 5px;
+			}
+		}
+
 		.filters {
 			padding: 10px;
-			margin-bottom: 15px;
+			margin-bottom: 10px;
 		}
 	}
 
-	#button-container {
-		.tinyButton {
-			text-align: left;
-			padding-right: 10px;
-			font-size: .8em;
-			padding-top: 4px;
-			cursor: pointer;
-		}
-	}
 }
-

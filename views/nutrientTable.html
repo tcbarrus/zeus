@@ -18,17 +18,22 @@
 			</div>
 			<div id="filterBlock">
 				<h2>Filters</h2>
-				<p>(only see the selected topics in the table)</p>
+				<p>only see the selected topics in the table</p>
 				<div id="filter-container">
-					<strong>Nutrients</strong><br>
-					<div id="button-container">
-						<a class="tinyButton" onclick="checkAll('nutrientCheckboxes', true)">Select All</a>
-						<a class="tinyButton" onclick="checkAll('nutrientCheckboxes', false)">Clear All</a>
+					<div class="filter-category">
+						<span>Nutrients</span>
+						<div id="button-container">
+							<a class="tinyButton" onclick="checkAll('nutrientCheckboxes', true)">Select All</a>
+							<br>
+							<a class="tinyButton" onclick="checkAll('nutrientCheckboxes', false)">Clear All</a>
+						</div>
 					</div>
 					<div id="nutrientCheckboxes" class="filters">
-						<!-- nutrient filters are filled in here from javascript -->
+						nutrient filters are filled in here from javascript
 					</div>
-					<strong>Category</strong><br>
+					<div class="filter-category" id="last">
+						<span>Category</span><br>
+					</div>
 					<div id="categoryCheckboxes" class="filters">
 						<input type="checkbox" id="functionCheckbox" checked/>Function<br>
 						<input type="checkbox" id="dSymptomsCheckbox" checked/>Deficiency Symptoms<br>

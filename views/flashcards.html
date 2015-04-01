@@ -14,33 +14,6 @@
 
 </head>
 <body style="overflow: hidden">
-	<div id="navBar">
-		<div class="wrapper">
-			<ul>
-				<li id="logo" class="navLink"><a href="home.html">NDFS 100</a></li>
-				<li class="navLink"><a href="articles.html">Articles &amp; Worksheets</a></li>
-				<li class="navLink"><a href="nutrientTable.html">Nutrient Table</a></li>
-				<li class="navLink"><span>Study Tools</span>
-					<ul>
-						<li><a href="study_guide.html">Study Guide</a></li>
-						<li><a href="flashcards.html">Flashcards</a></li>
-						<li><a href="matching.html">Matching Game</a></li>
-						<li><a href="multipleChoice.html">Multiple Choice</a></li>
-					</ul>
-				</li>
-			</ul>
-			<div id="loginContainer">
-				<ul>
-					<li class="navLink"><img id="profileImage" src="../images/Profile.png" />
-						<ul>
-							<li><a href="account_settings.html">Account Settings</a></li>
-							<li><a id="login" href="index.html">Logout</a></li>
-						</ul>
-					</li>
-				</ul>
-			</div>
-		</div>
-	</div>
 	<div class="wrapper">
 		<div id="content">
 			<div id="flashcardBlock">
@@ -79,8 +52,8 @@
 				<div id = "filters-container">
 					Filters<br/>
 					<div class="tinyText">(only see the selected topics in your flashcards)</div>
-					<div id = "nutrients">
-<u>Nutrients</u><br/>
+					<strong>Nutrients</strong><br/>
+					<div id = "nutrients">						
 						<input type="checkbox" name="nutrients" value="Vitamin_C" class="box" checked>Vitamin C<br>
 						<input type="checkbox" name="nutrients" value="Thiamin" class="box" checked>Thiamin<br>
 						<input type="checkbox" name="nutrients" value="Riboflavin" class="box" checked>Riboflavin<br>
@@ -123,5 +96,32 @@
 		</div>
 	</div>
 	<div id="shadow" onclick="hideModal()"></div>
+	<div id="navBar">
+		<div class="wrapper">
+			<ul>
+				<li id="logo" class="navLink"><a href="home.html">NDFS 100</a></li>
+				<li class="navLink"><a href="articles.html">Articles &amp; Worksheets</a></li>
+				<li class="navLink"><a href="nutrientTable.html">Nutrient Table</a></li>
+				<li class="navLink"><span>Study Tools</span>
+					<ul>
+						<li><a href="study_guide.html">Study Guide</a></li>
+						<li><a href="flashcards.html">Flashcards</a></li>
+						<li><a href="matching.html">Matching Game</a></li>
+						<li><a href="multipleChoice.html">Multiple Choice</a></li>
+					</ul>
+				</li>
+			</ul>
+			<div id="loginContainer">
+				<ul>
+					<li class="navLink"><img id="profileImage" src="../images/Profile.png" />
+						<ul>
+							<li><a href="account_settings.html">Account Settings</a></li>
+							<li><a id="login" href="index.html">Logout</a></li>
+						</ul>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</div>
 </body>
 </html>
