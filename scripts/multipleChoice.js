@@ -38,7 +38,23 @@ function generateQuestions() {
 			}
 		}
 	}
-	// TODO shuffle questions because right now they're in order...
+	questions = shuffle(questions);
+}
+
+function shuffle(array) {
+	var currentIndex = array.length, temporaryValue, randomIndex ;
+
+	while (0 !== currentIndex) {
+
+	randomIndex = Math.floor(Math.random() * currentIndex);
+	currentIndex -= 1;
+
+	temporaryValue = array[currentIndex];
+	array[currentIndex] = array[randomIndex];
+	array[randomIndex] = temporaryValue;
+	}
+
+	return array;
 }
 
 function createQuestion(nutrient, category, value) {
