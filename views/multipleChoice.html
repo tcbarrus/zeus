@@ -45,65 +45,76 @@
 		<div id="content">
 			<h2>Multiple Choice</h2>
 			<div id="mc-block-left">
-				<div id="results"></div>
 				<div id="questions"></div>
 			</div>
 			<div id="mc-block-right">
-				<div id="timer">Time: <time>00:00:00</time></div>
+				<div id="timer"><strong>Time:</strong> <span id="time">00:00:00</span></div>
 
 				<a id="new-test-btn" href="#" onclick="showModal()">New Test<img src="../images/Play.gif"></img></a>
 				<a id="submit-btn">Submit<img src="../images/WhiteCheckmark.png"></img></a>
+				<div id="results"></div>
 
 			</div>
 		</div>
 	</div>
 
+	<!-- SETTINGS MODAL -->
+
 	<div id = "settings-block">
 		<div id="upper-div">
 			<div id = "title-text">New Multiple Choice Test</div>
-			<div id="exit-button" onclick="hideModal()">X</div>
+			<div id="exit-button" onclick="hideModal()">&times;</div>
 		</div>
 		<div id = "settings-container">
-			<div id = "filters-container">
-				Filters<br/>
-				<div class="tinyText">(only see the selected topics in your flashcards)</div>
-				<div id = "nutrients">
-						<u>Nutrients</u><br/>
-						<input type="checkbox" name="nutrients" value="Vitamin_C" class="box" checked>Vitamin C<br>
-						<input type="checkbox" name="nutrients" value="Thiamin" class="box" checked>Thiamin<br>
-						<input type="checkbox" name="nutrients" value="Riboflavin" class="box" checked>Riboflavin<br>
-						<input type="checkbox" name="nutrients" value="Niacin" class="box" checked>Niacin<br>
-						<input type="checkbox" name="nutrients" value="Folate" class="box" checked>Folate<br>
-						<input type="checkbox" name="nutrients" value="Vitamin_B12" class="box" checked>Vitamin B12<br>
-						<input type="checkbox" name="nutrients" value="Calcium" class="box" checked>Calcium<br>
-						<input type="checkbox" name="nutrients" value="Magnesium" class="box" checked>Magnesium<br>
-						<input type="checkbox" name="nutrients" value="Sodium" class="box" checked>Sodium<br>
-						<input type="checkbox" name="nutrients" value="Potassium" class="box" checked>Potassium<br>
-						<input type="checkbox" name="nutrients" value="Iron" class="box" checked>Iron<br>
-						<input type="checkbox" name="nutrients" value="Iodine" class="box" checked>Iodine<br>
-						<input type="checkbox" name="nutrients" value="Zinc" class="box" checked>Zinc<br>
-						<input type="checkbox" name="nutrients" value="Fluoride" class="box" checked>Fluoride<br>
-						<input type="checkbox" name="nutrients" value="Selenium" class="box" checked>Selenium<br><br>
-						<u>Categories</u><br/>
-						<input type="checkbox" name="category" value="Function" class="box" checked>Function<br>
-						<input type="checkbox" name="category" value="Deficiency_Symptoms" class="box" checked>Deficiency Symptoms/Disease<br>
-						<input type="checkbox" name="category" value="Toxicity_Symptoms" class="box" checked>Toxicity Symptoms<br>
-						<input type="checkbox" name="category" value="Food_Sources" class="box" checked>Food Sources<br>
+			<div id="filterBlock">
+				<h2>Filters</h2>
+				<p>only see the selected topics on the test</p>
+				<div id="filter-container">
+					<div class="filter-category">
+						<span>Nutrient</span>
+						<div id="button-container">
+							<a class="tinyButton" onclick="checkAll('nutrientCheckboxes', true)">Select All</a>
+							<br>
+							<a class="tinyButton" onclick="checkAll('nutrientCheckboxes', false)">Clear All</a>
+						</div>
 					</div>
-			</div>
-			<div id = "options-container">
-				Options<br/><br/>
-				<div id="options">
-					<input type="checkbox" name="option" value="timeMyself" class="box" checked>Time myself<br>
-					<input type="checkbox" name="option" value="correctImmediately" class="box">Correct answers instantly<br>
+					<div id="nutrientCheckboxes" class="filters">
+						<label><input type="checkbox" name="nutrients" value="Vitamin_C" checked>Vitamin C</label><br>
+						<label><input type="checkbox" name="nutrients" value="Thiamin" checked>Thiamin</label><br>
+						<label><input type="checkbox" name="nutrients" value="Riboflavin" checked>Riboflavin</label><br>
+						<label><input type="checkbox" name="nutrients" value="Niacin" checked>Niacin</label><br>
+						<label><input type="checkbox" name="nutrients" value="Folate" checked>Folate</label><br>
+						<label><input type="checkbox" name="nutrients" value="Vitamin_B12" checked>Vitamin B12</label><br>
+						<label><input type="checkbox" name="nutrients" value="Calcium" checked>Calcium</label><br>
+						<label><input type="checkbox" name="nutrients" value="Magnesium" checked>Magnesium</label><br>
+						<label><input type="checkbox" name="nutrients" value="Sodium" checked>Sodium</label><br>
+						<label><input type="checkbox" name="nutrients" value="Potassium" checked>Potassium</label><br>
+						<label><input type="checkbox" name="nutrients" value="Iron" checked>Iron</label><br>
+						<label><input type="checkbox" name="nutrients" value="Iodine" checked>Iodine</label><br>
+						<label><input type="checkbox" name="nutrients" value="Zinc" checked>Zinc</label><br>
+						<label><input type="checkbox" name="nutrients" value="Fluoride" checked>Fluoride</label><br>
+						<label><input type="checkbox" name="nutrients" value="Selenium" checked>Selenium<br></label><br>
+					</div>
+					<div class="filter-category" id="last">
+						<span>Category</span><br>
+					</div>
+					<div id="categoryCheckboxes" class="filters">
+						<label><input type="checkbox" name="category" value="Function" checked/>Function</label><br>
+						<label><input type="checkbox" name="category" value="Deficiency_Symptoms" checked/>Deficie</label>ncy Symptoms<br>
+						<label><input type="checkbox" name="category" value="Toxicity_Symptoms" checked/>Toxicity Symptoms</label><br>
+						<label><input type="checkbox" name="category" value="Food_Sources" checked/>Food Sources</label><br>
+					</div>
 				</div>
 			</div>
-			<div id = "button-container">
-				<div id="newTestButton" class = "button">Begin</div>
-				<div class = "button" onclick="hideModal()">Cancel</div>
-				<div id="tinyButton-container">
-					<div class="tinyButton" onclick="checkAll('nutrients', true)">Select All</div>
-					<div class="tinyButton" onclick="checkAll('nutrients', false)">Clear All</div>
+			<div id = "optionsBlock">
+				<h2>Options</h2>
+				<div id="options">
+					<label><input type="checkbox" name="option" value="timeMyself" checked>Time myself</label><br>
+					<label><input type="checkbox" name="option" value="correctImmediately">Correct answers instantly</label><br>
+				</div>
+				<div id = "button-container">
+					<div id="newTestButton" class="button">Begin</div>
+					<div class="button" onclick="hideModal()">Cancel</div>
 				</div>
 			</div>
 		</div>

@@ -1,0 +1,63 @@
+@import "page.less";
+
+#filterBlock{
+	color: @grey-drk;
+
+	h2 {
+		margin: 15px 0 0 0 !important; 
+	}
+
+	p {
+		margin: 0 0 5px 0;
+		font-size: 14px !important;
+		font-style: italic;
+	}
+
+	#filter-container {
+		background-color: white;
+		border: 1px solid @grey-drk;
+		padding: 10px;
+		font-size: 14px;
+
+		input[type="checkbox"] {
+			margin-right: 15px;
+		}
+
+		.filter-category {
+			margin: 0 10px;
+
+			span {
+				font-weight: bold;
+				float: left;
+			}
+
+			#button-container {
+				.tinyButton {
+					float: right;
+					text-align: left;
+					font-size: 14px;
+					cursor: pointer;
+				}
+
+				.tinyButton:hover {
+					color: @orange;
+				}
+			}
+
+			&:first-of-type {
+				margin-top: 10px;
+
+			}	
+
+			&#last {
+				border-top: 1px solid @grey-lgt;
+				padding-top: 5px;
+			}
+		}
+
+		.filters {
+			padding: 10px;
+			margin-bottom: 10px;
+		}
+	}
+}

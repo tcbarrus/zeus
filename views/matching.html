@@ -81,55 +81,64 @@
 		</div>
 	</div>
 
+	<!-- SETTINGS MODAL -->
+
 	<div id = "settings-block">
 		<div id="upper-div">
-			<div id = "title-text">Matching Game Options</div>
-			<div id="exit-button" onclick="hideModal()">X</div>
+			<div id = "title-text">New Matching Game</div>
+			<div id="exit-button" onclick="hideModal()">&times;</div>
 		</div>
 		<div id = "settings-container">
-			<div id = "filters-container">
-				Filters<br/>
-				<div class="tinyText">(only see the selected topics in your flashcards)</div>
-				<div id = "nutrients">
-					<u>Nutrients</u><br/>
-					<input type="checkbox" name="nutrients" value="vitaminA" class="box">Vitamin A<br>
-					<input type="checkbox" name="nutrients" value="vitaminD" class="box">Vitamin D<br>
-					<input type="checkbox" name="nutrients" value="vitaminK" class="box">Vitamin K<br>
-					<input type="checkbox" name="nutrients" value="vitaminC" class="box">Vitamin C<br>
-					<input type="checkbox" name="nutrients" value="thiamin" class="box">Thiamin<br>
-					<input type="checkbox" name="nutrients" value="riboflavin" class="box">Riboflavin<br>
-					<input type="checkbox" name="nutrients" value="niacin" class="box">Niacin<br>
-					<input type="checkbox" name="nutrients" value="folate" class="box">Folate<br>
-					<input type="checkbox" name="nutrients" value="vitaminB12" class="box">Vitamin B12<br>
-					<input type="checkbox" name="nutrients" value="calcium" class="box">Calcium<br>
-					<input type="checkbox" name="nutrients" value="magnesium" class="box">Magnesium<br>
-					<input type="checkbox" name="nutrients" value="sodium" class="box">Sodium<br>
-					<input type="checkbox" name="nutrients" value="potassium" class="box">Potassium<br>
-					<input type="checkbox" name="nutrients" value="iron" class="box">Iron<br>
-					<input type="checkbox" name="nutrients" value="zinc" class="box">Zinc<br>
-					<input type="checkbox" name="nutrients" value="fluoride" class="box">Fluoride<br>
-					<input type="checkbox" name="nutrients" value="selenium" class="box">Selenium<br>
-					<u>Categories</u><br/>
-					<input type="checkbox" name="category" value="function" class="box">Function<br>
-					<input type="checkbox" name="category" value="deficiency" class="box">Deficiency Symptoms/Disease<br>
-					<input type="checkbox" name="category" value="toxicity" class="box">Toxicity Symptoms<br>
-					<input type="checkbox" name="category" value="foods" class="box">Food Sources<br>
+			<div id="filterBlock">
+				<h2>Filters</h2>
+				<p>only see the selected topics in the game</p>
+				<div id="filter-container">
+					<div class="filter-category">
+						<span>Nutrient</span>
+						<div id="button-container">
+							<a class="tinyButton" onclick="checkAll('nutrientCheckboxes', true)">Select All</a>
+							<br>
+							<a class="tinyButton" onclick="checkAll('nutrientCheckboxes', false)">Clear All</a>
+						</div>
+					</div>
+					<div id="nutrientCheckboxes" class="filters">
+						<label><input type="checkbox" name="nutrients" value="Vitamin_C" checked>Vitamin C</label><br>
+						<label><input type="checkbox" name="nutrients" value="Thiamin" checked>Thiamin</label><br>
+						<label><input type="checkbox" name="nutrients" value="Riboflavin" checked>Riboflavin</label><br>
+						<label><input type="checkbox" name="nutrients" value="Niacin" checked>Niacin</label><br>
+						<label><input type="checkbox" name="nutrients" value="Folate" checked>Folate</label><br>
+						<label><input type="checkbox" name="nutrients" value="Vitamin_B12" checked>Vitamin B12</label><br>
+						<label><input type="checkbox" name="nutrients" value="Calcium" checked>Calcium</label><br>
+						<label><input type="checkbox" name="nutrients" value="Magnesium" checked>Magnesium</label><br>
+						<label><input type="checkbox" name="nutrients" value="Sodium" checked>Sodium</label><br>
+						<label><input type="checkbox" name="nutrients" value="Potassium" checked>Potassium</label><br>
+						<label><input type="checkbox" name="nutrients" value="Iron" checked>Iron</label><br>
+						<label><input type="checkbox" name="nutrients" value="Iodine" checked>Iodine</label><br>
+						<label><input type="checkbox" name="nutrients" value="Zinc" checked>Zinc</label><br>
+						<label><input type="checkbox" name="nutrients" value="Fluoride" checked>Fluoride</label><br>
+						<label><input type="checkbox" name="nutrients" value="Selenium" checked>Selenium<br></label><br>
+					</div>
+					<div class="filter-category" id="last">
+						<span>Category</span><br>
+					</div>
+					<div id="categoryCheckboxes" class="filters">
+						<label><input type="checkbox" name="category" value="Function" checked/>Function</label><br>
+						<label><input type="checkbox" name="category" value="Deficiency_Symptoms" checked/>Deficiency Symptoms</label><br>
+						<label><input type="checkbox" name="category" value="Toxicity_Symptoms" checked/>Toxicity Symptoms</label><br>
+						<label><input type="checkbox" name="category" value="Food_Sources" checked/>Food Sources</label><br>
+					</div>
 				</div>
 			</div>
-			<div id = "options-container">
-				Options<br/><br/>
+			<div id = "optionsBlock">
+				<h2>Options</h2>
 				<div id="options">
-					<input type="checkbox" name="option" value="correct" class="box">Correct answers instantly<br>
-					<input type="checkbox" name="option" value="timer" class="box">Time myself<br>
+					<label><input type="checkbox" name="option" value="correct">Correct answers instantly</label><br>
+					<label><input type="checkbox" name="option" value="timer">Time myself</label><br>
 				</div>
-			</div>
-			<div id = "button-container">
-				<div class = "button" onclick="">Save
-				</div>
-				<div class = "button" onclick="hideModal()">Cancel</div>
-				<div id="tinyButton-container">
-					<div class="tinyButton" onclick="checkAll('nutrients', true)">Select All</div>
-					<div class="tinyButton" onclick="checkAll('nutrients', false)">Clear All</div>
+				<div id = "button-container">
+					<div class = "button" onclick="">Save
+					</div>
+					<div class = "button" onclick="hideModal()">Cancel</div>
 				</div>
 			</div>
 		</div>
