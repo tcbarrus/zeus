@@ -1,3 +1,9 @@
+window.onload=function(){
+	loadData(function() {
+
+	});
+}
+
 function drop(e){
 	e.preventDefault();
     var data = e.dataTransfer.getData("text");
@@ -10,7 +16,7 @@ function drag(e){
 
 function allowDrop(e){
 	e.preventDefault();
-	if(e.target.getAttribute("draggable") == true || e.target.tagName == "STRONG"){
+	if(e.target.classList.contains("fact") || e.target.tagName == "STRONG"){
 		e.dataTransfer.dropEffect = "none";
 	}
 }
