@@ -75,7 +75,7 @@ function showNutrientFilters()
 	var checkboxes = "";
 	for (var key in data) {
 		var cleanName = key.replace(" ", "_");
-		checkboxes += "<input type='checkbox' id='" + cleanName + "Checkbox' checked />" + key + "<br>";
+		checkboxes += "<label><input type='checkbox' id='" + cleanName + "Checkbox' checked />" + key + "</label><br>";
 	}
 	document.querySelector("#nutrientCheckboxes").innerHTML = checkboxes;
 }
