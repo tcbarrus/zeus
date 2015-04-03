@@ -109,17 +109,12 @@ function applyFilters()
 	}
 
 	// Apply nutrient filters.
-	var i = 0;
+	var i = 1;
 	for (var key in data) {
 		var cleanName = key.replace(" ", "_");
-		var displayMode = document.getElementById(cleanName + "Checkbox").checked ? "table-cell" : "none";
-		var cells = document.querySelectorAll("#nutrientTable tr:nth-child(" + parseInt(i + 1) + ") td");
-		for (var j = 0; j < cells.length; j++) {
-			// Always update the nutrient label, the others only if the category hasn't already turned it off.
-			if (j == 0 || cells[j].style.display != "none") {
-				cells[j].style.display = displayMode;
-			}
-		}
+		var displayMode = document.getElementById(cleanName + "Checkbox").checked ? "table-row" : "none";
+		var row = document.querySelector("#nutrientTable tbody tr:nth-child(" + parseInt(i) + ")");
+		row.style.display = displayMode;
 		i++;
 	}
 }
