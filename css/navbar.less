@@ -8,6 +8,10 @@
 	box-shadow:#aaa 0px 2px 5px;
 	position:fixed;
 	top: 0px;
+	
+	.wrapper{
+		position: relative;
+	}
 
 	.unselectable-text;
 
@@ -50,13 +54,14 @@
 
 		&:last-child{
 			float: right;
+			margin-right: 0 !important;
 
 			&:hover{
 				ul{
-					right: 200px;
+					right: 0;
 
 					&:before{
-						left: 111px;
+						left: 135px;
 					}
 				}
 			}
