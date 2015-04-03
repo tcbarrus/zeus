@@ -106,7 +106,7 @@ function initView() {
 	for (var i = 0; i < questions.length; i++) {
 		var q = questions[i];
 		questionsContent += "<li>";
-		questionsContent += q.question + "<br>";
+		questionsContent += "<div class=\"prompt\">" + q.question + "</div>";
 		for (var j = 0; j < q.answers.length; j++) {
 			var a = q.answers[j];
 			var radioId = "q" + i + "a" + j;
@@ -198,7 +198,7 @@ function gradeQuestions() {
 function updateResults() {
 	var resultsDiv = document.getElementById("results");
 	var percent = +(100 * numberCorrect / outOf).toFixed(2);
-	resultsDiv.innerHTML = "You got " + numberCorrect + "/" + outOf + " (" + percent + "%)" +  " questions correct."
+	resultsDiv.innerHTML = "<h2>" + percent + "%</h2>" + "You got " + numberCorrect + "/" + outOf +  " questions correct."
 	resultsDiv.style.display = "block";
 }
 
