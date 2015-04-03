@@ -37,6 +37,16 @@
 
 		&:last-child{
 			float: right;
+
+			&:hover{
+				ul{
+					right: 200px;
+
+					&:before{
+						left: 111px;
+					}
+				}
+			}
 		}
 	}
 
@@ -58,11 +68,11 @@
 
 				li{
 					margin:0px;
-					padding:0px 20px;
 					position: relative;
 					z-index: 5;
 
 					a{
+						padding: 0 20px;
 						display:block;
 						width:100%;
 						height:100%;
@@ -89,6 +99,7 @@
 						border-bottom: 10px solid @grey-drk;
 						position: absolute;
 						top: -10px;
+						left: 35px;
 					}
 				}
 			}
