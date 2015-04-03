@@ -5,8 +5,19 @@
 	width: 66%;
 	float: left;
 
-	li {
-		margin-top: 15px;
+	#questions {
+
+		li {
+			margin-top: 15px;
+		/*
+			font-weight: bold;
+			line-height:1.5em;
+
+			label {
+				font-weight:normal;
+			}
+			*/
+		}
 	}
 
 	.incorrect{
@@ -66,6 +77,19 @@
 			margin-right: 7px;
 			margin-top: -1px;
 		}
+	}
+
+	#results {
+		display:none;
+		float:left;
+		margin-top:20px;
+		padding:10px;
+		background: @grey-lgt;
+		border:1px solid @grey-drk;
+		color:@grey-drk;
+		font-weight:bold;
+		width:~"calc(100% - 22px)";
+		border-radius:5px;
 	}
 }
 

@@ -4,7 +4,8 @@ var categoryFilters = [];
 var questions = [];
 var correctImmediately = false;
 var timeMyself = true;
-
+var numberCorrect = 0;
+var outOf = 0;
 var timerText,
 seconds = 0, minutes = 0, hours = 0,
 t;
@@ -118,27 +119,49 @@ function initView() {
 	questionsDiv.innerHTML = questionsContent;
 
 	// start the timer
-	timerText = document.getElementById('timer');
-	clearInterval(t);
-	seconds = 0;
+	timerText = document.getElementById('time');
+	stopTimer();
+	seconds = 0, minutes = 0, hours = 0;
 	timer();
 
-	// Hide results
+	// Restart results
 	document.getElementById("results").style.display = "none";
+	numberCorrect = 0;
+	outOf = 0;
 
 	// Set up the listeners for correcting immediately
 	if (correctImmediately) {
 		document.getElementById("submit-btn").style.display = "none";
 		var inputs = document.querySelectorAll("#questions input");
 		for (var i = 0; i < inputs.length; i++){
-			inputs[i].addEventListener("click", function() {
-				var qId = this.name.split("-")[1];
-				gradeQuestion(qId);
-			});
+			inputs[i].addEventListener("click", choiceHandler, false);
 		}
 	}
 	else {
 		document.getElementById("submit-btn").style.display = "block";
+	}
+}
+
+function choiceHandler(event) {
+	var qId = this.name.split("-")[1];
+	if (gradeQuestion(qId)) {
+		numberCorrect++;
+	}
+	outOf++;
+
+	if (outOf == questions.length) {
+		stopTimer();
+	}
+
+	updateResults();
+	disableQuestion(this.name);
+}
+
+function disableQuestion(name) {
+	var inputs = document.querySelectorAll("#questions input[name='" + name + "']");
+	for (var i = 0; i < inputs.length; i++) {
+		inputs[i].disabled = true;
+		inputs[i].removeEventListener("click", choiceHandler, false);
 	}
 }
 
@@ -163,19 +186,19 @@ function gradeQuestion(index) {
 
 
 function gradeQuestions() {
-	var numCorrect = 0;
 	for (var i = 0; i < questions.length; i++) {
 		if (gradeQuestion(i)) {
-			numCorrect++;
+			numberCorrect++;
 		}
+		outOf++;
 	}
-	updateResults(numCorrect);
+	updateResults();
 }
 
-function updateResults(numCorrect) {
+function updateResults() {
 	var resultsDiv = document.getElementById("results");
-	var percent = +(100 * numCorrect / questions.length).toFixed(2);
-	resultsDiv.innerHTML = "You got " + numCorrect + "/" + questions.length + " (" + percent + "%)" +  " questions correct."
+	var percent = +(100 * numberCorrect / outOf).toFixed(2);
+	resultsDiv.innerHTML = "You got " + numberCorrect + "/" + outOf + " (" + percent + "%)" +  " questions correct."
 	resultsDiv.style.display = "block";
 }
 
@@ -190,7 +213,7 @@ function add() {
 		}
 	}
 
-	timerText.textContent = "Time: " + (hours ? (hours > 9 ? hours : "0" + hours) : "00") + ":" + (minutes ? (minutes > 9 ? minutes : "0" + minutes) : "00") + ":" + (seconds > 9 ? seconds : "0" + seconds);
+	timerText.textContent = (hours ? (hours > 9 ? hours : "0" + hours) : "00") + ":" + (minutes ? (minutes > 9 ? minutes : "0" + minutes) : "00") + ":" + (seconds > 9 ? seconds : "0" + seconds);
 }
 
 function timer() {
@@ -202,9 +225,13 @@ function timer() {
 	}
 }
 
+function stopTimer() {
+	clearInterval(t);
+}
+
 function attachListeners() {
 	document.getElementById("submit-btn").addEventListener("click", function() {
-		clearTimeout(t);
+		stopTimer();
 		gradeQuestions();
 		document.getElementById("submit-btn").style.display = "none";
 		window.scrollTo(0, 0);
