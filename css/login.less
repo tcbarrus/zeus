@@ -1,38 +1,41 @@
 @import "page.less";
 
 
-#loginModal {
-	width: 250px;
+#loginModal, #registerModal {
+	width: 300px;
 	text-align: center;
 	position: fixed;
 	padding: 25px;
 	top: 25%;
-	left: ~"calc(50% - 125px)";
+	left: ~"calc(50% - 150px)";
 	background-color: #3f9db6;
 	display: none;
 	z-index: 3;
 	color: white;
+	border-radius: 5px;
 
 	#close-btn {
 		float: right;
-		margin: 0;
+		margin: -8px 0 0 0;
 		cursor: pointer;
+
+		&:hover {
+			color: @grey-lgt;
+		}
 	}
 
-	#login-frm {
-		width: 250px;
+	input {
+		width: 300px;
+		box-sizing: border-box;
+		padding: 8px;
+		margin: 10px 0;
+		border: none;
+		font-size: 14px;
+		outline: none;
+	}
 
-		input {
-			width: 250px;
-			box-sizing: border-box;
-			padding: 8px;
-			margin: 10px 0;
-			border: none;
-		}
-
-		.incorrect {
-			border: 1px solid red;
-		}
+	.incorrect {
+		border: 1px solid @orange;
 	}
 
 	.btn-container {
@@ -43,74 +46,25 @@
 		#sign-up-btn {
 			cursor: pointer;
 			float: left;
-			padding: 5px 0;
+			padding: 9px 0;
+			font-size: 14px;
+
+			&:hover {
+				color: @grey-lgt;
+			}
 		}
 
 		#submit-btn {
 			background-color: white;
 			float: right;
 			.button;
+			padding: 9px;
 			color: @blue;
-		}
+			font-size: 14px;
 
-		#submit-btn:hover {
-			color: white;
-		}
-	}
-
-}
-
-
-#registerModal {
-	width: 250px;
-	text-align: center;
-	position: fixed;
-	padding: 25px;
-	top: 25%;
-	left: ~"calc(50% - 125px)";
-	background-color: #3f9db6;
-	display: none;
-	z-index: 3;
-	color: white;
-
-	#close-btn {
-		float: right;
-		margin: 0;
-		cursor: pointer;
-	}
-
-	#register-frm {
-		width: 250px;
-
-		input {
-			width: 250px;
-			box-sizing: border-box;
-			padding: 8px;
-			margin: 10px 0;
-			border: none;
-		}
-
-		.incorrect {
-			border: 1px solid red;
-		}
-	}
-
-	.btn-container {
-		margin-top: 20px;
-		height: 20px;
-		font-size: .8em;
-
-		#sign-up-btn {
-			cursor: pointer;
-			float: left;
-			padding: 5px 0;
-		}
-
-		#submit-btn {
-			background-color: white;
-			float: right;
-			.button;
-			color: @blue;
+			&:hover {
+				color: white;
+			}
 		}
 	}
 

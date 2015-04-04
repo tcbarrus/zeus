@@ -45,10 +45,19 @@
 			height: 28px;
 			width: 35px;
 			margin-top: 12px;
+			background: url("../images/Profile.png");
+			background-size: 34px 27px;
+			background-repeat: no-repeat;
 		}
 
 		&:hover {
 			color: @grey-lgt;
+
+			#profileImage {
+				background: url("../images/ProfileGrey.png");
+				background-size: 34px 27px;
+				background-repeat: no-repeat;
+			}
 		}
 
 
@@ -141,5 +150,9 @@
 		cursor: pointer;
 		text-decoration: none;
 		color: white;
+
+		&:hover {
+			color: @grey-lgt;
+		}
 	}
 }

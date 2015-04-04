@@ -72,7 +72,7 @@ function registerUser() {
 
 	if(username == "" || usernameTaken(username)) {
 		// indicate an error if this username is already used
-		addErrorBorder(form.elements[0]);
+		form.elements[0].className += "incorrect";
 		return;
 	}
 
@@ -83,8 +83,9 @@ function registerUser() {
 
 	if(password == "" || password != confirmPassword) {
 		// indicate an error if the passwords are blank or don't match each other
-		addErrorBorder(form.elements[1]);
-		addErrorBorder(form.elements[2]);
+		form.elements[1].className += "incorrect";
+		form.elements[2].className += "incorrect";
+
 		return;
 	}
 
@@ -109,11 +110,6 @@ function usernameTaken(username) {
 	}
 
 	return false;
-}
-
-
-function addErrorBorder(elem) {
-	elem.style.border = "1px solid red";
 }
 
 
