@@ -1,0 +1,45 @@
+@import "page.less";
+
+.setting-column {
+
+	float: left;
+	width: 300px;
+	height: 400px;
+	padding: 14px;
+
+
+	&:nth-child(2){
+		padding-left: 0;
+	}
+
+	&:nth-child(3){
+		border-left: 1px solid @grey-lgt;
+		border-right: 1px solid @grey-lgt;
+
+	}
+
+	&:nth-child(4) {
+		padding-right: 0;
+	}
+
+	a {
+		.button;
+		padding: 8px;
+		float: right;
+		width: 40%;
+	}
+
+	#cancel-btn {
+		float: left;
+	}
+
+	input {
+		display: block;
+		width: ~"calc((100% - 20px))";
+		padding: 8px;
+		margin: 15px 0px;
+		border: solid 1px @grey-lgt;
+		outline: none;
+		font-size: 14px;
+	}
+}
