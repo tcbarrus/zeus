@@ -123,6 +123,8 @@ function initView() {
 	stopTimer();
 	seconds = 0, minutes = 0, hours = 0;
 	timer();
+	document.getElementById("timer").style.display = timeMyself ? "block" : "none";
+
 
 	// Restart results
 	document.getElementById("results").style.display = "none";
@@ -267,6 +269,21 @@ function saveOptions() {
 	initView();
 }
 
+// Cancel changes if they close without pressing save.
+function restoreOptions() {
+	var nutrientInputs = document.querySelectorAll("input[name='nutrients']");
+	for (var i = 0; i < nutrientInputs.length; i++) {
+		nutrientInputs[i].checked = (nutrientFilters.indexOf(nutrientInputs[i].value) == -1);
+	}
+
+	var categoryInputs = document.querySelectorAll("input[name='category']");
+	for (var i = 0; i < categoryInputs.length; i++) {
+		categoryInputs[i].checked = (categoryFilters.indexOf(categoryInputs[i].value) == -1);
+	}
+
+	document.querySelector("input[value='timeMyself']").checked = timeMyself;
+	document.querySelector("input[value='correctImmediately']").checked = correctImmediately;
+}
 
 //MULTIPLE CHOICE SETTINGS FUNCTIONS
 function checkAll(ID, checktoggle)

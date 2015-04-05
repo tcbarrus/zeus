@@ -33,4 +33,7 @@ function hideModal() {
 
 	document.getElementsByTagName("body")[0].style.overflow = "auto";
 
+	if (restoreOptions) {
+		restoreOptions();
+	}
 }

@@ -217,6 +217,23 @@ function saveOptions() {
 	restartFlashcards();
 }
 
+// Cancel changes if they close modal without pressing save.
+function restoreOptions() {
+	var nutrientInputs = document.querySelectorAll("input[name='nutrients']");
+	for (var i = 0; i < nutrientInputs.length; i++) {
+		nutrientInputs[i].checked = (nutrientFilters.indexOf(nutrientInputs[i].value) == -1);
+	}
+
+	var categoryInputs = document.querySelectorAll("input[name='category']");
+	for (var i = 0; i < categoryInputs.length; i++) {
+		categoryInputs[i].checked = (categoryFilters.indexOf(categoryInputs[i].value) == -1);
+	}
+
+	document.querySelector("input[value='seeFront']").checked = defaultToFrontSide;
+	document.querySelector("input[value='randomizeOrder']").checked = randomizeOrder;
+	document.querySelector("input[value='displayStatistics']").checked = displayStatistics;
+}
+
 function checkAll(ID, checktoggle)
 {
   var checkboxes = new Array(); 
