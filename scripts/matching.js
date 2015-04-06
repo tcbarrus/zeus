@@ -86,7 +86,7 @@ function initView() {
 		}
 		for (var i = 0; i < facts.length; i++) {
 			var fact = facts[i];
-			factsHTML += '<div class="fact" id="fact-' + i + '" draggable="true" ondragstart="drag(event)">' + fact["fact"] +'</div>';
+			factsHTML += '<div class="fact" id="fact-' + i + '" draggable="true" ondragstart="drag(event)"><p>' + fact["fact"] +'</p><div class="marker"></div></div>';	
 		}
 	}
 
