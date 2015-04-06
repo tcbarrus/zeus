@@ -1,19 +1,78 @@
+var facts = [];
 var nutrientFilters = [];
 var categoryFilters = [];
 var timeMyself = true;
-var correctImmediately = true;
 
 window.onload=function(){
 	showModal();
 	loadData(function() {
-
+		generateFacts();
+		initView();
 	});
 }
 
+
+
+function generateFacts() {
+	facts = [];
+	var categories = ["Function", "Deficiency Symptoms", "Toxicity Symptoms", "Food Sources"];
+	for (var key in data) {
+		if (nutrientFilters.indexOf(key.replace(" ", "_")) != -1) {
+			continue;
+		}
+		var nutrient = data[key];
+		for (var i = 0; i < categories.length; i++) {
+			var category = categories[i];
+			if (categoryFilters.indexOf(category.replace(" ", "_")) != -1) {
+				continue;
+			}
+			var fact = "<strong>" + category + ":</strong> " + nutrient[category];
+			if (fact != "" && fact.toLowerCase() != "none") {
+				facts.push({
+					"fact": fact,
+					"answer": key,
+				});
+			}
+		}
+	}
+	/*
+	if (randomizeOrder) {
+		flashcards = shuffle(flashcards);
+	}
+	*/
+}
+
+function initView() {
+	factsHTML = "";
+	for (var i = 0; i < 5; i++) {
+		var fact = facts[i];
+		factsHTML += '<div class="fact" id="fact-' + i + '" draggable="true" ondragstart="drag(event)">' + fact["fact"] +'</div>';
+	}
+
+	document.getElementById("facts").innerHTML = factsHTML;
+}
+
+
+
 function drop(e){
 	e.preventDefault();
-    var data = e.dataTransfer.getData("text");
-    e.target.appendChild(document.getElementById(data));
+	var data = e.dataTransfer.getData("text");
+	var factDiv = document.getElementById(data);
+	e.target.appendChild(factDiv);
+
+	// Correct answer
+	var index = data.split("-")[1];
+	var correctAnswer =facts[index].answer
+	var userAnswer = e.target.querySelector("strong").innerHTML;
+	if (correctAnswer == userAnswer) {
+		factDiv.classList.remove("incorrect");
+		factDiv.classList.add("correct");
+	}
+	else {
+		factDiv.classList.remove("correct");
+		factDiv.classList.add("incorrect");
+	}
+
 }
 
 function drag(e){
@@ -44,5 +103,4 @@ function restoreOptions() {
 	}
 
 	document.querySelector("input[value='timeMyself']").checked = timeMyself;
-	document.querySelector("input[value='correctImmediately']").checked = correctImmediately;
 }
