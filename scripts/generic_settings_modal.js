@@ -24,6 +24,19 @@ function showModal() {
 	allowModalExit();
 }
 
+function showNoInfoModal() {
+	document.getElementById("no-data-container").style.visibility = "visible";
+	// document.getElementById("background").className = "blur";
+	//add blurring
+	document.getElementById("shadow").style.visibility = "visible";
+	document.getElementById("content").className = "blur";
+	document.getElementById("navBar").className = "blur";
+
+	document.getElementsByTagName("body")[0].style.overflow = "hidden";
+
+	allowModalExit();
+}
+
 function hideModal() {
 	document.getElementById("settings-block").style.visibility = "hidden";
 	// document.getElementById("background").className = "";

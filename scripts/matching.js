@@ -9,12 +9,19 @@ seconds = 0, minutes = 0, hours = 0,
 t;
 
 window.onload=function(){
-	showModal();
-	preventModalExit();
-	loadData();
-	attachListeners();
+	
+	loadData(function() {
+		generateFacts();
+		if (chosenNutrients.length != 4 || facts.length == 0) {
+		showNoInfoModal();
+		}
+		else {
+			showModal();
+			preventModalExit();
+			attachListeners();
+		}
+	});
 }
-
 
 function attachListeners() {
 	document.getElementById("newGameButton").addEventListener("click", function() {
