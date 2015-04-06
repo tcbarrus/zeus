@@ -118,7 +118,7 @@ function drop(e){
 	var target = e.target;
 
 	// Correct the target when they release over a child of main div
-	while (target.classList.contains("fact") || target.tagName == "H3" || target.tagName == "STRONG" ) {
+	while (!target.classList.contains("nutrient_target")) {
 		target = target.parentElement;
 	}
 	target.appendChild(factDiv);
