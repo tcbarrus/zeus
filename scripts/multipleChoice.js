@@ -14,6 +14,7 @@ t;
 window.onload = function() {
 	// loadData is defined in nutrientDataManager.js
 	showModal();
+	preventModalExit();
 	loadData(function() {
 		generateQuestions();
 		initView();

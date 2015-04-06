@@ -5,6 +5,7 @@ var timeMyself = true;
 
 window.onload=function(){
 	showModal();
+	preventModalExit();
 	loadData(function() {
 		generateFacts();
 		initView();
