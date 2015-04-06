@@ -20,6 +20,8 @@ function showModal() {
 	document.getElementById("navBar").className = "blur";
 
 	document.getElementsByTagName("body")[0].style.overflow = "hidden";
+
+	allowModalExit();
 }
 
 function hideModal() {
@@ -36,4 +38,16 @@ function hideModal() {
 	if (restoreOptions) {
 		restoreOptions();
 	}
+}
+
+function allowModalExit() {
+	document.getElementById("cancelButton").style.display = "";
+	document.getElementById("exit-button").style.display = "";
+	document.getElementById("shadow").onclick = hideModal;
+}
+
+function preventModalExit() {
+	document.getElementById("cancelButton").style.display = "none";
+	document.getElementById("exit-button").style.display = "none";
+	document.getElementById("shadow").onclick = function() {};
 }
