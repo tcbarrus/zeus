@@ -14,6 +14,7 @@ window.onload=function(){
 		generateFacts();
 		if (chosenNutrients.length != 4 || facts.length == 0) {
 			showNoInfoModal();
+			preventModalExit();
 		}
 		else {
 			showModal();
