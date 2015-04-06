@@ -13,7 +13,8 @@ window.onload=function(){
 	loadData(function() {
 		generateFacts();
 		if (chosenNutrients.length != 4 || facts.length == 0) {
-		showNoInfoModal();
+			showNoInfoModal();
+			preventModalExit();
 		}
 		else {
 			showModal();
