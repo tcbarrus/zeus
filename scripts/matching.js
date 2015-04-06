@@ -5,12 +5,9 @@ var categoryFilters = [];
 var timeMyself = true;
 
 window.onload=function(){
-	//showModal();
+	showModal();
 	preventModalExit();
-	loadData(function() {
-		generateFacts();
-		initView();
-	});
+	loadData();
 	attachListeners();
 }
 
@@ -79,12 +76,8 @@ function initView() {
 	document.getElementById("nutrient3").innerHTML = "";
 	document.getElementById("nutrient4").innerHTML = "";
 	factsHTML = "";
-	if (chosenNutrients.length != 4) {
-		console.log("Not enough nutrients chosen");
-		console.log(chosenNutrients);
-	}
-	else if (facts.length == 0) {
-		// Need to enter in information.
+	if (chosenNutrients.length != 4 || facts.length == 0) {
+		document.getElementById("no-data-container").style.visibility = "visible";
 	}
 	else {
 

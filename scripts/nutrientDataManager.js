@@ -46,3 +46,11 @@ function saveToLocalStorage()
 {
 	localStorage.setItem('nutrientTableData', JSON.stringify(data));
 }
+
+function loadEmptyData() {
+	loadFromFile("../json/emptyData.json");
+}
+
+function loadFullData() {
+	loadFromFile("../json/data.json");
+}

@@ -11,19 +11,6 @@ window.onload = function() {
 	});
 }
 
-function loadEmptyData() {
-	loadFromFile("../json/emptyData.json");
-}
-
-function loadFullData() {
-	loadFromFile("../json/data.json");
-}
-
-// We could also have it save when a textarea changes or something
-// setInterval(function() {
-// 	saveTable();
-// }, secondsBetweenSave * 1000);
-
 // Rebuilds the entire table from data and puts it in the table block div
 function buildTable()
 {
