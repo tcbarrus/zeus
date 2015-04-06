@@ -9,28 +9,39 @@ window.onload=function(){
 		generateFacts();
 		initView();
 	});
+	attachListeners();
 }
 
 
+function attachListeners() {
+	document.getElementById("newGameButton").addEventListener("click", function() {
+		saveOptions();
+		hideModal();
+	});
+}
 
+/*
+if (nutrientFilters.indexOf(key.replace(" ", "_")) != -1) {
+			continue;
+		}
+		*/
 function generateFacts() {
 	facts = [];
 	var categories = ["Function", "Deficiency Symptoms", "Toxicity Symptoms", "Food Sources"];
-	for (var key in data) {
-		if (nutrientFilters.indexOf(key.replace(" ", "_")) != -1) {
-			continue;
-		}
-		var nutrient = data[key];
-		for (var i = 0; i < categories.length; i++) {
-			var category = categories[i];
+	var chosenNutrients = chooseNutrients();
+	for (var i = 0; i < chosenNutrients.length; i++) {
+		var nutrient = chosenNutrients[i];
+		var nutrientInfo = data[nutrient];
+		for (var j = 0; j < categories.length; j++) {
+			var category = categories[j];
 			if (categoryFilters.indexOf(category.replace(" ", "_")) != -1) {
 				continue;
 			}
-			var fact = "<strong>" + category + ":</strong> " + nutrient[category];
+			var fact = "<strong>" + category + ":</strong> " + nutrientInfo[category];
 			if (fact != "" && fact.toLowerCase() != "none") {
 				facts.push({
 					"fact": fact,
-					"answer": key,
+					"answer": nutrient,
 				});
 			}
 		}
@@ -42,9 +53,14 @@ function generateFacts() {
 	*/
 }
 
+// Return an array of four nutrients from applicable ones.
+function chooseNutrients() {
+
+}
+
 function initView() {
 	factsHTML = "";
-	for (var i = 0; i < 5; i++) {
+	for (var i = 0; i < facts.length; i++) {
 		var fact = facts[i];
 		factsHTML += '<div class="fact" id="fact-' + i + '" draggable="true" ondragstart="drag(event)">' + fact["fact"] +'</div>';
 	}
@@ -60,10 +76,10 @@ function drop(e){
 	var factDiv = document.getElementById(data);
 	e.target.appendChild(factDiv);
 
-	// Correct answer
+	// Check answer
 	var index = data.split("-")[1];
 	var correctAnswer =facts[index].answer
-	var userAnswer = e.target.querySelector("strong").innerHTML;
+	var userAnswer = e.target.querySelector("h3").innerHTML;
 	if (correctAnswer == userAnswer) {
 		factDiv.classList.remove("incorrect");
 		factDiv.classList.add("correct");
@@ -86,10 +102,7 @@ function allowDrop(e){
 	}
 }
 
-/*
-restoreOptions is currently an exact copy of multipleChoice's.
-You'll either have to be consistent with variable names or change accordingly.
-*/
+
 // Cancel changes if they close modal without pressing save.
 function restoreOptions() {
 	var nutrientInputs = document.querySelectorAll("input[name='nutrients']");
@@ -103,4 +116,27 @@ function restoreOptions() {
 	}
 
 	document.querySelector("input[value='timeMyself']").checked = timeMyself;
+}
+
+function saveOptions() {
+	// Update nutrient filter
+	nutrientFilters = [];
+	var uncheckedNutrientsInputs = document.querySelectorAll("input[name='nutrients']:not(:checked)");
+	for (var i = 0; i < uncheckedNutrientsInputs.length; i++) {
+		nutrientFilters.push(uncheckedNutrientsInputs[i].value);
+	}
+
+	// Update category filter
+	categoryFilters = [];
+	var uncheckedCategoriesInputs = document.querySelectorAll("input[name='category']:not(:checked)");
+	for (var i = 0; i < uncheckedCategoriesInputs.length; i++) {
+		categoryFilters.push(uncheckedCategoriesInputs[i].value);
+	}
+	
+	// Update options
+	timeMyself = document.querySelector("input[name='option'][value='timeMyself']").checked;
+
+	// Rebuild
+	generateFacts();
+	initView();
 }
