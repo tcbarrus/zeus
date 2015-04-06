@@ -47,7 +47,6 @@ function hideNoInfoModal() {
 	document.getElementById("navBar").className = "";
 
 	document.getElementsByTagName("body")[0].style.overflow = "auto";
-	}
 }
 
 function hideModal() {
