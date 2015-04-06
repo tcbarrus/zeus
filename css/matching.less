@@ -4,10 +4,12 @@
 	#matching{
 		div{
 			margin-bottom: 10px;
-			p{
+			#helper-text {
 				font-size: 14px;
 				margin:0;
 				font-style: italic;
+				text-align: center;
+				padding-left: 110px; // because the new game button pushes the text over to the left
 			}
 		}
 
@@ -36,8 +38,9 @@
 			}
 
 			&:nth-child(3){
-				height: 507px;
+				height: 538px;
 				background-color: @grey-lgt;
+				overflow-y: scroll;
 			}
 
 			.half_column{
@@ -46,6 +49,7 @@
 				background-color: @blue;
 				color: white;
 				overflow-y: auto;
+				border: 6px solid @blue;
 
 				h3{
 					color: white;
@@ -68,14 +72,57 @@
 			width: 93%;
 			background-color: white;
 			.unselectable-text;
+
+			position: relative;
+
+			p {
+				margin: 0;
+			}
 		}
 
-		.incorrect{
+		.incorrect{ 
 			border: 3px solid @orange;
+
+			p {
+				margin-right: 40px;
+			}
+
+			.marker {
+				position: absolute;
+				background: url("../images/Wrong.png");
+				background-repeat: no-repeat;
+				background-size: 20px 20px;
+				float: right;
+				width: 20px;
+				height: 20px;
+				top: ~"calc(50% - 10px)";
+				right: 10px;
+				margin: 0;
+
+			}
+
 		}
 
 		.correct{
 			border: 3px solid @green;
+
+			p {
+				margin-right: 40px;
+			}
+
+			.marker {
+				position: absolute;
+				background: url("../images/Right.png");
+				background-repeat: no-repeat;
+				background-size: 30px 30px;
+				float: right;
+				width: 30px;
+				height: 30px;
+				top: ~"calc(50% - 15px)";
+				right: 10px;
+				margin: 0;
+
+			}
 		}
  	}
 }
