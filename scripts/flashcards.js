@@ -142,9 +142,14 @@ function restartFlashcards() {
 }
 
 function updateView() {
-	flashcards[currentCard.index].seen = true; // Move to flipFlashcard if "seen" means both sides.
-	updateFlashcardDisplay();
-	updateStatsDisplay();
+	if (flashcards.length > 0) {
+		flashcards[currentCard.index].seen = true; // Move to flipFlashcard if "seen" means both sides.
+		updateFlashcardDisplay();
+		updateStatsDisplay();
+	}
+	else {
+		showNoInfoModal();
+	}
 }
 
 function updateFlashcardDisplay() {

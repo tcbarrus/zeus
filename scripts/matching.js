@@ -13,7 +13,7 @@ window.onload=function(){
 	loadData(function() {
 		generateFacts();
 		if (chosenNutrients.length != 4 || facts.length == 0) {
-		showNoInfoModal();
+			showNoInfoModal();
 		}
 		else {
 			showModal();
@@ -30,11 +30,6 @@ function attachListeners() {
 	});
 }
 
-/*
-if (nutrientFilters.indexOf(key.replace(" ", "_")) != -1) {
-			continue;
-		}
-		*/
 function generateFacts() {
 	facts = [];
 	var categories = ["Function", "Deficiency Symptoms", "Toxicity Symptoms", "Food Sources"];
@@ -88,7 +83,7 @@ function initView() {
 	document.getElementById("nutrient4").innerHTML = "";
 	factsHTML = "";
 	if (chosenNutrients.length != 4 || facts.length == 0) {
-		document.getElementById("no-data-container").style.visibility = "visible";
+		showNoInfoModal();
 	}
 	else {
 
