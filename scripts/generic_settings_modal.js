@@ -37,7 +37,7 @@ function showNoInfoModal() {
 	allowModalExit();
 }
 
-function hideModal() {
+function hideNoInfoModal() {
 	document.getElementById("no-data-container").style.visibility = "hidden";
 	// document.getElementById("background").className = "";
 
