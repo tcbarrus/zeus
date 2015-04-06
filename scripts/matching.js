@@ -4,6 +4,7 @@ var timeMyself = true;
 var correctImmediately = true;
 
 window.onload=function(){
+	showModal();
 	loadData(function() {
 
 	});
