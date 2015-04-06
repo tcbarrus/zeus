@@ -1,10 +1,11 @@
 var facts = [];
+var chosenNutrients = [];
 var nutrientFilters = [];
 var categoryFilters = [];
 var timeMyself = true;
 
 window.onload=function(){
-	showModal();
+	//showModal();
 	preventModalExit();
 	loadData(function() {
 		generateFacts();
@@ -29,7 +30,7 @@ if (nutrientFilters.indexOf(key.replace(" ", "_")) != -1) {
 function generateFacts() {
 	facts = [];
 	var categories = ["Function", "Deficiency Symptoms", "Toxicity Symptoms", "Food Sources"];
-	var chosenNutrients = chooseNutrients();
+	chosenNutrients = chooseNutrients();
 	for (var i = 0; i < chosenNutrients.length; i++) {
 		var nutrient = chosenNutrients[i];
 		var nutrientInfo = data[nutrient];
@@ -38,49 +39,101 @@ function generateFacts() {
 			if (categoryFilters.indexOf(category.replace(" ", "_")) != -1) {
 				continue;
 			}
-			var fact = "<strong>" + category + ":</strong> " + nutrientInfo[category];
+			var fact = nutrientInfo[category];
 			if (fact != "" && fact.toLowerCase() != "none") {
 				facts.push({
-					"fact": fact,
+					"fact":  "<strong>" + category + ":</strong> " + fact,
 					"answer": nutrient,
 				});
 			}
 		}
 	}
-	/*
-	if (randomizeOrder) {
-		flashcards = shuffle(flashcards);
-	}
-	*/
+	
+	facts = shuffle(facts);
 }
 
 // Return an array of four nutrients from applicable ones.
 function chooseNutrients() {
-	return ["Calcium", "Vitamin C", "Thiamin", "Riboflavin"];
+	// Return empty array if they have filtered out too many nutrients.
+	var allNutrients = shuffle(Object.keys(data));
+	if (allNutrients.length - nutrientFilters.length < 4) {
+		return [];
+	}
+
+	var chosenNutrients = [];
+	for (var i = 0; i < allNutrients.length; i++) {
+		if (nutrientFilters.indexOf(allNutrients[i].replace(" ", "_")) != -1) {
+			continue;
+		}
+		chosenNutrients.push(allNutrients[i]);
+		if (chosenNutrients.length == 4) 
+			break;
+
+	}
+	return chosenNutrients
 }
 
 function initView() {
+	document.getElementById("nutrient1").innerHTML = "";
+	document.getElementById("nutrient2").innerHTML = "";
+	document.getElementById("nutrient3").innerHTML = "";
+	document.getElementById("nutrient4").innerHTML = "";
 	factsHTML = "";
-	for (var i = 0; i < facts.length; i++) {
-		var fact = facts[i];
-		factsHTML += '<div class="fact" id="fact-' + i + '" draggable="true" ondragstart="drag(event)">' + fact["fact"] +'</div>';
+	if (chosenNutrients.length != 4) {
+		console.log("Not enough nutrients chosen");
+		console.log(chosenNutrients);
+	}
+	else if (facts.length == 0) {
+		// Need to enter in information.
+	}
+	else {
+
+		for (var i = 0; i < chosenNutrients.length; i++) {
+			document.getElementById("nutrient" + (i + 1)).innerHTML = "<h3>" + chosenNutrients[i] + "</h3>";
+		}
+		for (var i = 0; i < facts.length; i++) {
+			var fact = facts[i];
+			factsHTML += '<div class="fact" id="fact-' + i + '" draggable="true" ondragstart="drag(event)">' + fact["fact"] +'</div>';
+		}
 	}
 
 	document.getElementById("facts").innerHTML = factsHTML;
+	
 }
 
+
+function shuffle(array) {
+	var currentIndex = array.length, temporaryValue, randomIndex ;
+
+	while (0 !== currentIndex) {
+		randomIndex = Math.floor(Math.random() * currentIndex);
+		currentIndex -= 1;
+
+		temporaryValue = array[currentIndex];
+		array[currentIndex] = array[randomIndex];
+		array[randomIndex] = temporaryValue;
+	}
+
+	return array;
+}
 
 
 function drop(e){
 	e.preventDefault();
 	var data = e.dataTransfer.getData("text");
 	var factDiv = document.getElementById(data);
-	e.target.appendChild(factDiv);
+	var target = e.target;
+
+	// Correct the target when they release over a child of main div
+	while (target.classList.contains("fact") || target.tagName == "H3" || target.tagName == "STRONG" ) {
+		target = target.parentElement;
+	}
+	target.appendChild(factDiv);
 
 	// Check answer
 	var index = data.split("-")[1];
 	var correctAnswer =facts[index].answer
-	var userAnswer = e.target.querySelector("h3").innerHTML;
+	var userAnswer = target.querySelector("h3").innerHTML;
 	if (correctAnswer == userAnswer) {
 		factDiv.classList.remove("incorrect");
 		factDiv.classList.add("correct");
@@ -98,9 +151,6 @@ function drag(e){
 
 function allowDrop(e){
 	e.preventDefault();
-	if(e.target.classList.contains("fact") || e.target.tagName == "STRONG"){
-		e.dataTransfer.dropEffect = "none";
-	}
 }
 
 
