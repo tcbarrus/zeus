@@ -4,6 +4,10 @@ var nutrientFilters = [];
 var categoryFilters = [];
 var timeMyself = true;
 
+var timerText,
+seconds = 0, minutes = 0, hours = 0,
+t;
+
 window.onload=function(){
 	showModal();
 	preventModalExit();
@@ -91,7 +95,41 @@ function initView() {
 	}
 
 	document.getElementById("facts").innerHTML = factsHTML;
+
+	// start the timer
+	timerText = document.getElementById('time');
+	stopTimer();
+	seconds = 0, minutes = 0, hours = 0;
+	timer();
+	document.getElementById("timer").style.display = timeMyself ? "block" : "none";
 	
+}
+
+function add() {
+	seconds++;
+	if (seconds >= 60) {
+		seconds = 0;
+		minutes++;
+		if (minutes >= 60) {
+			minutes = 0;
+			hours++;
+		}
+	}
+
+	timerText.textContent = (hours ? (hours > 9 ? hours : "0" + hours) : "00") + ":" + (minutes ? (minutes > 9 ? minutes : "0" + minutes) : "00") + ":" + (seconds > 9 ? seconds : "0" + seconds);
+}
+
+function timer() {
+	if (timeMyself) {
+		t = setInterval(add, 1000);
+	}
+	else {
+		timerText.textContent = "";
+	}
+}
+
+function stopTimer() {
+	clearInterval(t);
 }
 
 
@@ -136,6 +174,10 @@ function drop(e){
 		factDiv.classList.add("incorrect");
 	}
 
+	var numberCorrect = document.querySelectorAll(".correct");
+	if(numberCorrect.length == facts.length) {
+		stopTimer();
+	}
 }
 
 function drag(e){
