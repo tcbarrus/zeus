@@ -56,7 +56,7 @@ function generateFacts() {
 
 // Return an array of four nutrients from applicable ones.
 function chooseNutrients() {
-
+	return ["Calcium", "Vitamin C", "Thiamin", "Riboflavin"];
 }
 
 function initView() {
