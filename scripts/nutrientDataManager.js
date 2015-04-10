@@ -10,7 +10,7 @@ function loadData(onLoadFunction) {
 		onDataLoad();
 	}
 	else if (data == null) {
-		loadFromFile("../json/emptyData.json");
+		loadFromFile("../json/data.json");
 	}
 }
 
