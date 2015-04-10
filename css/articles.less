@@ -12,7 +12,8 @@
 
 		#header {
 			#back-button {
-				background: url("../images/BackArrow.png") no-repeat 5px 50% @blue;
+				background: url("../images/BackArrow.png") no-repeat 9px 48% @blue;
+				background-size: 15px;
 				padding-left: 30px;
 				margin-right: 50px;
 				float: left;
@@ -22,6 +23,9 @@
 				padding-right: 30px;
 				margin-left: 50px;
 				float: right;
+				background: url("../images/Notes.png") no-repeat 57px 50% @blue;
+				background-size: 20px 20px;
+
 			}
 
 			.articleButton {
@@ -34,7 +38,7 @@
 				margin-top: 10px;
 
 				&:hover{
-					background-color: @orange;
+					background-color: @orange !important;
 				}
 			}
 
@@ -58,23 +62,45 @@
 		}
 	}
 
-	#note-view {
-		width: 32%;
-		height: 100%;
+}
+
+#note-view {
+	display: none;
+	width: 300px;
+	height: 275px;
+	position: absolute;
+	top: 90px;
+	right: ~"calc((100% - 960px) / 2)";
+	box-shadow: rgba(76, 76, 76, 0.7) 0px 6px 10px 5px;
+	background-color: @blue;
+	border-radius: 5px;
+
+	#note-header span {
+		height: 25px;
+		text-align: right;
+		color: white;
+		padding: 5px 10px 0 0;
+		cursor: pointer;
 		float: right;
 
-		#note-block {
-			height: ~"calc(100% - 55px)";
-			width: 100%;
-			padding: 10px;
-			box-sizing: border-box;
-			border: 1px solid @grey-drk;
-			resize: none;
-			outline: none;
-			font-size: 14px;
+		&:hover {
+			color: @grey-lgt;
 		}
 	}
 
+
+	#note-block {
+		height: 250px;
+		width: 100%;
+		padding: 10px;
+		box-sizing: border-box;
+		border: 1px solid @grey-lgt;
+		resize: none;
+		outline: none;
+		font-size: 14px;
+		border-radius: 0 0 5px 5px;
+
+	}
 }
 
 .column {

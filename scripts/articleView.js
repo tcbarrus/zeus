@@ -1,7 +1,7 @@
 var articleLocation;
 
 var humanTitles = {
-	"FoodInOurLives.pdf": "The Meaning of Food in Our Lives: A Cross Cultural Perspective on Eating and Well-Being",
+	"FoodInOurLives.pdf": "The Meaning of Food in Our Lives",
 	"UnderTheInfluence.pdf": "Under The Influence",
 	"QuickStart.pdf": "Quick Start Gluten-Free Diet Guide",
 	"Perfection.pdf": "Seeking Perfection Without Being a Perfectionist",
@@ -29,6 +29,8 @@ function loadPageData() {
 	
 	// load user's notes
 	document.getElementById('note-block').value = localStorage.getItem(articleLocation + '-notes') || "";
+
+	document.getElementById("note-view").style.display = "none";
 }
 
 function saveNote() {
@@ -38,4 +40,14 @@ function saveNote() {
 
 function back() {
 	history.back();
+}
+
+function toggleNoteView() {
+	var elem = document.getElementById("note-view");
+
+	if(elem.style.display == "none") {
+		elem.style.display = "block";
+	} else {
+		elem.style.display = "none";
+	}
 }
