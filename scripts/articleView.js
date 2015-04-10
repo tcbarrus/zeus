@@ -18,6 +18,7 @@ var humanTitles = {
 
 };
 
+
 function loadPageData() {
 
 	// load pdf article
@@ -33,4 +34,8 @@ function loadPageData() {
 function saveNote() {
 	var note = document.getElementById('note-block').value;
 	localStorage.setItem(articleLocation + '-notes', note);
+}
+
+function back() {
+	history.back();
 }

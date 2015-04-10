@@ -173,6 +173,12 @@ function updateStatsDisplay() {
 	document.getElementById("gradingPanel").style.visibility = flipped ? "visible" : "hidden";
 }
 
+
+function loadAndHide() {
+	loadFullData();
+	hideNoInfoModal();
+}
+
 function calculateStats() {
 	var numberCorrect = 0;
 	var numberTotalGraded = 0;

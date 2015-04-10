@@ -1,7 +1,19 @@
 @import "page.less";
 
+#back-button {
+	cursor: pointer;
+	background: url("../images/BackArrow.png") no-repeat 5px 50% @blue;
+	line-height:30px;
+	padding:10px 10px 10px 30px;
+	margin-bottom:40px;
+
+	&:hover{
+		background-color: @orange;
+	}
+}
+
 #article-view {
-	height: ~"calc(100% - 80px)";
+	height: ~"calc(100% - 100px)";
 	width: 960px;
 	position: absolute;
 
