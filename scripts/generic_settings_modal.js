@@ -13,11 +13,10 @@ function checkAll(ID, checktoggle)
 
 function showModal() {
 	document.getElementById("settings-block").style.visibility = "visible";
-	// document.getElementById("background").className = "blur";
+
 	//add blurring
 	document.getElementById("shadow").style.visibility = "visible";
 	document.getElementById("content").className = "blur";
-	document.getElementById("navBar").className = "blur";
 
 	document.getElementsByTagName("body")[0].style.overflow = "hidden";
 
@@ -26,11 +25,10 @@ function showModal() {
 
 function showNoInfoModal() {
 	document.getElementById("no-data-container").style.visibility = "visible";
-	// document.getElementById("background").className = "blur";
+	
 	//add blurring
 	document.getElementById("shadow").style.visibility = "visible";
 	document.getElementById("content").className = "blur";
-	document.getElementById("navBar").className = "blur";
 
 	document.getElementsByTagName("body")[0].style.overflow = "hidden";
 
@@ -43,7 +41,6 @@ function hideNoInfoModal() {
 	// remove blurring
 	document.getElementById("shadow").style.visibility = "hidden";
 	document.getElementById("content").className = "";
-	document.getElementById("navBar").className = "";
 
 	document.getElementsByTagName("body")[0].style.overflow = "auto";
 }
@@ -54,7 +51,6 @@ function hideModal() {
 	// remove blurring
 	document.getElementById("shadow").style.visibility = "hidden";
 	document.getElementById("content").className = "";
-	document.getElementById("navBar").className = "";
 
 	if(window.location.pathname == "/views/multipleChoice.html") {
 			document.getElementsByTagName("body")[0].style.overflow = "auto";

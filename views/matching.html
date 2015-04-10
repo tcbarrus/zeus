@@ -13,7 +13,6 @@
 
 </head>
 <body style="overflow: hidden">
-	
 	<div class="wrapper">
 		<div id="content">
 			<div id="matching">
@@ -42,81 +41,20 @@
 		</div>
 	</div>
 
-	<!-- SETTINGS MODAL -->
 
-	<div id = "settings-block">
-		<div id="upper-div">
-			<div id = "title-text">New Matching Game</div>
-			<div id="exit-button" onclick="hideModal()">&times;</div>
-		</div>
-		<div id = "settings-container">
-			<div id="filterBlock">
-				<h2>Filters</h2>
-				<p>Four of the selected nutrients will be used.</p>
-				<div id="filter-container">
-					<div class="filter-category">
-						<span>Nutrient</span>
-						<div id="button-container">
-							<a class="tinyButton" onclick="checkAll('nutrientCheckboxes', true)">Select All</a>
-							<br>
-							<a class="tinyButton" onclick="checkAll('nutrientCheckboxes', false)">Clear All</a>
-						</div>
-					</div>
-					<div id="nutrientCheckboxes" class="filters">
-						<label><input type="checkbox" name="nutrients" value="Vitamin_C" checked>Vitamin C</label><br>
-						<label><input type="checkbox" name="nutrients" value="Thiamin" checked>Thiamin</label><br>
-						<label><input type="checkbox" name="nutrients" value="Riboflavin" checked>Riboflavin</label><br>
-						<label><input type="checkbox" name="nutrients" value="Niacin" checked>Niacin</label><br>
-						<label><input type="checkbox" name="nutrients" value="Folate" checked>Folate</label><br>
-						<label><input type="checkbox" name="nutrients" value="Vitamin_B12" checked>Vitamin B12</label><br>
-						<label><input type="checkbox" name="nutrients" value="Calcium" checked>Calcium</label><br>
-						<label><input type="checkbox" name="nutrients" value="Magnesium" checked>Magnesium</label><br>
-						<label><input type="checkbox" name="nutrients" value="Sodium" checked>Sodium</label><br>
-						<label><input type="checkbox" name="nutrients" value="Potassium" checked>Potassium</label><br>
-						<label><input type="checkbox" name="nutrients" value="Iron" checked>Iron</label><br>
-						<label><input type="checkbox" name="nutrients" value="Iodine" checked>Iodine</label><br>
-						<label><input type="checkbox" name="nutrients" value="Zinc" checked>Zinc</label><br>
-						<label><input type="checkbox" name="nutrients" value="Fluoride" checked>Fluoride</label><br>
-						<label><input type="checkbox" name="nutrients" value="Selenium" checked>Selenium<br></label>
-					</div>
-					<div class="filter-category" id="last">
-						<span>Category</span><br>
-					</div>
-					<div id="categoryCheckboxes" class="filters">
-						<label><input type="checkbox" name="category" value="Function" checked/>Function</label><br>
-						<label><input type="checkbox" name="category" value="Deficiency_Symptoms" checked/>Deficiency Symptoms</label><br>
-						<label><input type="checkbox" name="category" value="Toxicity_Symptoms" checked/>Toxicity Symptoms</label><br>
-						<label><input type="checkbox" name="category" value="Food_Sources" checked/>Food Sources</label><br>
-					</div>
-				</div>
-			</div>
-			<div id = "optionsBlock">
-				<h2>Options</h2>
-				<div id="options">
-					<label><input type="checkbox" name="option" value="timeMyself" checked>Time myself</label><br>
-				</div>
-				<div id = "button-container">
-					<div id="newGameButton" class="modal-btn">Begin
-					</div>
-					<div id="cancelButton" class="modal-btn" onclick="hideModal()">Cancel</div>
-				</div>
-			</div>
-		</div>
-	</div>
-	<div id="shadow" onclick="hideModal()"></div>
-
-<!-- NO DATA MODAL -->
+	<!-- NO DATA MODAL -->
 	<div id="no-data-container">
-		<p class="header">No Facts Generated<p>
+		<p class="header">No Facts Generated</p>
 		<div class="info">
 			<p>Please ensure:</p>
 			<ul>
-			<li>You have entered information in the <a href="nutrientTable.html">nutrient table</a> for the nutrients and facts you wish to review. In this prototype, you can load sample data by clicking <a onclick='loadFullData()'>here</a>.</li>
-			<li>You selected at least four nutrients when you started the game. <a href="matching.html">Start new game.</a></li>
+				<li>You have entered information in the <a href="nutrientTable.html">nutrient table</a> for the nutrients and facts you wish to review. In this prototype, you can load sample data by clicking <a onclick='loadFullData()'>here</a>.</li>
+				<li>You selected at least four nutrients when you started the game. <a href="matching.html">Start new game.</a></li>
 			</ul>
 		</div>
 	</div>
 
+	<!-- MENU BAR -->
 	<div id="navBar">
 		<div class="wrapper">
 			<ul>
@@ -140,6 +78,69 @@
 				</li>
 			</ul>
 		</div>
+
+		<!-- SETTINGS MODAL: located in the navigation bar so that it is in the same context and z-index works -->
+
+		<div id = "settings-block">
+			<div id="upper-div">
+				<div id = "title-text">New Matching Game</div>
+				<div id="exit-button" onclick="hideModal()">&times;</div>
+			</div>
+			<div id = "settings-container">
+				<div id="filterBlock">
+					<h2>Filters</h2>
+					<p>four of the selected nutrients will be used</p>
+					<div id="filter-container">
+						<div class="filter-category">
+							<span>Nutrient</span>
+							<div id="button-container">
+								<a class="tinyButton" onclick="checkAll('nutrientCheckboxes', true)">Select All</a>
+								<br>
+								<a class="tinyButton" onclick="checkAll('nutrientCheckboxes', false)">Clear All</a>
+							</div>
+						</div>
+						<div id="nutrientCheckboxes" class="filters">
+							<label><input type="checkbox" name="nutrients" value="Vitamin_C" checked>Vitamin C</label><br>
+							<label><input type="checkbox" name="nutrients" value="Thiamin" checked>Thiamin</label><br>
+							<label><input type="checkbox" name="nutrients" value="Riboflavin" checked>Riboflavin</label><br>
+							<label><input type="checkbox" name="nutrients" value="Niacin" checked>Niacin</label><br>
+							<label><input type="checkbox" name="nutrients" value="Folate" checked>Folate</label><br>
+							<label><input type="checkbox" name="nutrients" value="Vitamin_B12" checked>Vitamin B12</label><br>
+							<label><input type="checkbox" name="nutrients" value="Calcium" checked>Calcium</label><br>
+							<label><input type="checkbox" name="nutrients" value="Magnesium" checked>Magnesium</label><br>
+							<label><input type="checkbox" name="nutrients" value="Sodium" checked>Sodium</label><br>
+							<label><input type="checkbox" name="nutrients" value="Potassium" checked>Potassium</label><br>
+							<label><input type="checkbox" name="nutrients" value="Iron" checked>Iron</label><br>
+							<label><input type="checkbox" name="nutrients" value="Iodine" checked>Iodine</label><br>
+							<label><input type="checkbox" name="nutrients" value="Zinc" checked>Zinc</label><br>
+							<label><input type="checkbox" name="nutrients" value="Fluoride" checked>Fluoride</label><br>
+							<label><input type="checkbox" name="nutrients" value="Selenium" checked>Selenium<br></label>
+						</div>
+						<div class="filter-category" id="last">
+							<span>Category</span><br>
+						</div>
+						<div id="categoryCheckboxes" class="filters">
+							<label><input type="checkbox" name="category" value="Function" checked/>Function</label><br>
+							<label><input type="checkbox" name="category" value="Deficiency_Symptoms" checked/>Deficiency Symptoms</label><br>
+							<label><input type="checkbox" name="category" value="Toxicity_Symptoms" checked/>Toxicity Symptoms</label><br>
+							<label><input type="checkbox" name="category" value="Food_Sources" checked/>Food Sources</label><br>
+						</div>
+					</div>
+				</div>
+				<div id = "optionsBlock">
+					<h2>Options</h2>
+					<div id="options">
+						<label><input type="checkbox" name="option" value="timeMyself" checked>Time myself</label><br>
+					</div>
+					<div id = "button-container">
+						<div id="newGameButton" class="modal-btn">Begin
+						</div>
+						<div id="cancelButton" class="modal-btn" onclick="hideModal()">Cancel</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div id="shadow" onclick="hideModal()"></div>
 	</div>
 </body>
 </html>
