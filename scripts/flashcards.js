@@ -2,14 +2,16 @@
 var flashcards = [];
 var nutrientFilters = []; // Don't show these nutrients
 var categoryFilters = []; // Don't show these categories
-var flashcardDiv;
+var flashcardFront;
+var flashcardBack;
 var currentCard = {"index": 0, "front": true};
 var defaultToFrontSide = true;
 var displayStatistics = true;
 var randomizeOrder = true;
 
 window.onload = function() {
-	flashcardDiv = document.querySelector("#flashcard h3");
+	flashcardFront = document.querySelector(".front h3");
+	flashcardBack = document.querySelector(".back h3");
 	// loadData is defined in nutrientDataManager.js
 	loadData(function() {
 		generateFlashcards();
@@ -109,6 +111,7 @@ function nextFlashcard() {
 	if (currentCard.index + 1 < flashcards.length) {
 		currentCard.index++;
 		currentCard.front = defaultToFrontSide;
+		document.querySelector(".flip-container").className = "flip-container";
 		updateView();
 	}
 }
@@ -117,12 +120,14 @@ function previousFlashcard() {
 	if (currentCard.index != 0) {
 		currentCard.index--;
 		currentCard.front = defaultToFrontSide;
+		document.querySelector(".flip-container").className = "flip-container";
 		updateView();
 	}
 }
 
 function flipFlashcard() {
 	currentCard.front = !currentCard.front;
+	document.querySelector(".flip-container").classList.toggle("flip")
 	updateView();
 }
 
@@ -154,7 +159,8 @@ function updateView() {
 
 function updateFlashcardDisplay() {
 	var card = flashcards[currentCard.index];
-	flashcardDiv.innerHTML = currentCard.front ? card["front"] : card["back"];
+	flashcardFront.innerHTML = card["front"];
+	flashcardBack.innerHTML = card["back"];
 }
 
 function updateStatsDisplay() {
@@ -171,12 +177,6 @@ function updateStatsDisplay() {
 	}
 	var flipped = currentCard.front != defaultToFrontSide;
 	document.getElementById("gradingPanel").style.visibility = flipped ? "visible" : "hidden";
-}
-
-
-function loadAndHide() {
-	loadFullData();
-	hideNoInfoModal();
 }
 
 function calculateStats() {

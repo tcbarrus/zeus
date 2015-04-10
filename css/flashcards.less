@@ -5,7 +5,7 @@
 		float: left;
 		width: 66%;
 
-		#flashcard{
+		.flashcard{
 			position: relative;
 			height: 400px;
 			overflow: auto;
@@ -88,6 +88,44 @@
 				height: 20px;
 				float: right;
 				margin: 1px 6px 0 0;
+			}
+		}
+
+
+		/*** Flipping Card CSS ***/
+		.flip-container{
+			perspective: 1000;
+			width: 100%;
+			height: 400px;
+
+			&.flip{
+				.flipper{
+					transform: rotateY(180deg);
+				}
+			}
+
+			.flipper{
+				position: relative;
+				transition: 0.6s;
+				transform-style: preserve-3d;
+
+				.front,.back{
+					backface-visibility: hidden;
+					position: absolute;
+					top:0;
+					left:0;
+					width: 100%;
+				}
+
+				.front{
+					z-index: 2;
+					transform: rotateY(0deg);
+				}
+
+				.back{
+					background-color: @grey-lgt;
+					transform: rotateY(180deg);
+				}
 			}
 		}
 	}
