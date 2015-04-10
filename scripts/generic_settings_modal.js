@@ -39,7 +39,6 @@ function showNoInfoModal() {
 
 function hideNoInfoModal() {
 	document.getElementById("no-data-container").style.visibility = "hidden";
-	// document.getElementById("background").className = "";
 
 	// remove blurring
 	document.getElementById("shadow").style.visibility = "hidden";
@@ -51,14 +50,15 @@ function hideNoInfoModal() {
 
 function hideModal() {
 	document.getElementById("settings-block").style.visibility = "hidden";
-	// document.getElementById("background").className = "";
 
 	// remove blurring
 	document.getElementById("shadow").style.visibility = "hidden";
 	document.getElementById("content").className = "";
 	document.getElementById("navBar").className = "";
 
-	document.getElementsByTagName("body")[0].style.overflow = "auto";
+	if(window.location.pathname == "/views/multipleChoice.html") {
+			document.getElementsByTagName("body")[0].style.overflow = "auto";
+	}
 
 	if (restoreOptions) {
 		restoreOptions();
