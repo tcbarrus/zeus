@@ -1,10 +1,18 @@
 @import "page.less";
 
 #back-button {
-	cursor: pointer;
 	background: url("../images/BackArrow.png") no-repeat 5px 50% @blue;
-	line-height:30px;
 	padding:10px 10px 10px 30px;
+}
+
+#notes {
+
+}
+
+.articleButton {
+	cursor: pointer;
+	background: url("") no-repeat 5px 50% @blue;
+	line-height:10px;
 	margin-bottom:40px;
 
 	&:hover{
@@ -18,7 +26,7 @@
 	position: absolute;
 
 	#pdf-view {
-		width: 65%;
+		width: 100%;
 		height: 100%;
 		float: left;
 
@@ -26,6 +34,8 @@
 			white-space: nowrap;
 			overflow: hidden;
 			text-overflow: ellipsis;
+			width: 801px;
+			vertical-align: middle;
 		}
 		
 		iframe {

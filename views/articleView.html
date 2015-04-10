@@ -14,18 +14,19 @@
 	
 	<div class="wrapper">
 		<div id="content">
-			<a id="back-button" class="button" onclick="back()">Back</a>
 			<div id="article-view">
 				<div id="pdf-view">
+					<a id="back-button" class="button articleButton" onclick="back()">Back</a>
 					<h2 id="article-title"><strong></strong></h2>
+					<a id="notes" class="button articleButton" onclick="back()">Notes</a>
 					<iframe id="pdf" src="" type="application/pdf"></iframe>
-				</div>
-				<div id="note-view">
-					<h2><strong>Notes</strong></h2>
-					<textarea id="note-block" placeholder="Click here and begin typing to add notes..." oninput="saveNote()"></textarea>
-				</div>
+				</div>				
 			</div>
 		</div>
+	</div>
+	<div id="note-view">
+		<h2><strong>Notes</strong></h2>
+		<textarea id="note-block" placeholder="Click here and begin typing to add notes..." oninput="saveNote()"></textarea>
 	</div>
 	<div id="navBar">
 		<div class="wrapper">
