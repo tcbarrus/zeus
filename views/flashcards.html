@@ -13,16 +13,24 @@
 	<script src="../scripts/generic_settings_modal.js" type="text/javascript"></script>
 
 </head>
-<body style="overflow: hidden">
+<!--<body style="overflow: hidden">-->
+<body>
 	<div class="wrapper">
 		<div id="content">
 			<div id="flashcardBlock">
 				<h2>Flash Cards</h2>
-				<div id="flashcard">
-					<h3>Foods Vitamin C is Found in</h3>
-					<div id="gradingPanel">
-						<p>Were you correct?</p>
-						<a id="yesButton"></a><a id="noButton"></a>
+				<div class="flip-container">
+					<div class="flipper">
+						<div class="front flashcard">
+							<h3>Foods Vitamin C is Found in</h3>
+						</div>
+						<div class="back flashcard">
+							<h3></h3>
+							<div id="gradingPanel">
+								<p>Were you correct?</p>
+								<a id="yesButton"></a><a id="noButton"></a>
+							</div>
+						</div>
 					</div>
 				</div>
 				<div id="buttonPanel">
