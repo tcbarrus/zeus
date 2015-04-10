@@ -1,14 +1,3 @@
-#spashImage{
-	width: 600px;
-	height: 400px;
-	float: left;
-	background-color: gray;
-	margin-right: 25px;
-}
-
-#spashText{
-	float: left;
-}
 
 #shadow{
 	width: 100%;
@@ -26,18 +15,6 @@
 	-o-filter: blur(10px);
 	-ms-filter: blur(10px);
 	filter: blur(10px);
-}
-
-#feedbackBlock{
-	position: absolute;
-	bottom: 0;
-	right: 15px;
-}
-
-#feedbackBlock div{
-	width: 100px;
-	margin: 15px 0;
-	border: 1px solid black;
 }
 
 #settings{

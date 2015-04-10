@@ -17,35 +17,26 @@ window.onload = function() {
 	xmlhttp.send();
 }
 
-
-function displayLoginModal(){
-	// make the login modal visible
-	document.getElementById("loginModal").style.display = "block";
-
-	// blur the background
-	document.getElementById("shadow").style.visibility = "visible";
-	document.getElementById("content").className = "blur";
-	document.getElementById("navBar").className = "blur";
+document.onkeydown = function(event) {
+	var key = event.keyCode ? event.keyCode : event.which;
+	if (key == 13) { // Enter
+		if(document.getElementById("loginBlock").style.display == "none") { // is the register block showing?
+			registerUser();
+		} else {
+			submitCredentials();
+		}
+	}
 }
 
 
-function displayRegisterModal(){
-	// make the login modal visible and blur the background
-	document.getElementById("registerModal").style.display = "block";
+function displayRegisterBlock() {
+	document.getElementById("loginBlock").style.display = "none";
+	document.getElementById("registerBlock").style.display = "block";
 }
 
-
-function hideModals() {
-	// hide login modal
-	document.getElementById("loginModal").style.display = "none";
-
-	// hide register modal
-	document.getElementById("registerModal").style.display = "none";
-
-	// remove blurring
-	document.getElementById("shadow").style.visibility = "hidden";
-	document.getElementById("content").className = "";
-	document.getElementById("navBar").className = "";	
+function displayLoginBlock() {
+	document.getElementById("loginBlock").style.display = "block";
+	document.getElementById("registerBlock").style.display = "none";
 }
 
 
@@ -56,7 +47,7 @@ function submitCredentials() {
 
 	for(var i = 0; i < credentialData.length; i++) {
 		if(credentialData[i].user == username && credentialData[i].pass == password) {
-			window.location = "home.html";
+			window.location = "articles.html";
 		}
 	}
 
@@ -98,7 +89,7 @@ function registerUser() {
 	});
 
 	localStorage.setItem('credentials', JSON.stringify(localStorageData));
-	window.location = "home.html";
+	window.location = "articles.html";
 }
 
 

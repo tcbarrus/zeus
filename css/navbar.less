@@ -4,7 +4,8 @@
 	width:100%;
 	height:50px;
 	border-bottom: 1px solid white;
-	background: -webkit-linear-gradient(left, @blue, @green);
+	background: -moz-linear-gradient(left, #3f9db6 0%, #6ab067 100%); /* FF3.6+ */
+	background: -webkit-linear-gradient(left, @blue, @green); /* Chrome */
 	box-shadow:#aaa 0px 2px 5px;
 	position:fixed;
 	top: 0px;
@@ -18,6 +19,11 @@
 	#logo{
 		font-weight:bold;
 		margin-right:40px;
+
+		&:hover {
+			color: white;
+			cursor: default;
+		}
 	}
 
 	.navLink{
