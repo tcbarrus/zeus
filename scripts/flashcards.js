@@ -8,6 +8,9 @@ var currentCard = {"index": 0, "front": true};
 var defaultToFrontSide = true;
 var displayStatistics = true;
 var randomizeOrder = true;
+var fadeTimer;
+
+var nextPromptVisible = false;
 
 window.onload = function() {
 	flashcardFront = document.querySelector(".front h3");
@@ -107,8 +110,37 @@ function attachListeners() {
 	}
 }
 
+function hidePrompts() {
+	clearInterval(fadeTimer);
+	if(nextPromptVisible) {
+		nextPromptVisible = false;
+		fade(document.getElementById("prompt-next"));
+	} else {
+		fade(document.getElementById("prompt-prev"));
+	}
+}
+
+function fade(element) {
+    var op = 1;  // initial opacity
+    var timer = setInterval(function () {
+        if (op <= 0.1){
+            clearInterval(timer);
+            element.style.display = 'none';
+        }
+        element.style.opacity = op;
+        element.style.filter = 'alpha(opacity=' + op * 100 + ")";
+        op -= op * 0.1;
+    }, 10);
+}
+
+
 function nextFlashcard() {
 	if (currentCard.index + 1 < flashcards.length) {
+		nextPromptVisible = true;
+		document.getElementById("prompt-next").style.opacity = "1";
+		document.getElementById("prompt-next").style.display = "block";
+		fadeTimer = setInterval(hidePrompts, 400);
+
 		currentCard.index++;
 		currentCard.front = defaultToFrontSide;
 		document.querySelector(".flip-container").className = "flip-container";
@@ -118,6 +150,10 @@ function nextFlashcard() {
 
 function previousFlashcard() {
 	if (currentCard.index != 0) {
+		document.getElementById("prompt-prev").style.opacity = "1";
+		document.getElementById("prompt-prev").style.display = "block";
+		fadeTimer = setInterval(hidePrompts, 400);
+
 		currentCard.index--;
 		currentCard.front = defaultToFrontSide;
 		document.querySelector(".flip-container").className = "flip-container";

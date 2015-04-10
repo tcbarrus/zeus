@@ -4,6 +4,22 @@
 	#flashcardBlock{
 		float: left;
 		width: 66%;
+		position: relative;
+
+		.flash-prompt {
+			display: none;
+			position: absolute;
+			top: 80px;
+			left: ~"calc(50% - 100px)";
+			z-index: 3;
+			width: 200px;
+			padding: 20px 0;
+			background-color: rgba(76,76,76,0.8);
+			text-align: center;
+			color: white;
+			border-radius: 5px;
+			font-size: 20px;
+		}
 
 		.flashcard{
 			position: relative;
