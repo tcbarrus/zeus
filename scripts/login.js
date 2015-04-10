@@ -17,6 +17,17 @@ window.onload = function() {
 	xmlhttp.send();
 }
 
+document.onkeydown = function(event) {
+	var key = event.keyCode ? event.keyCode : event.which;
+	if (key == 13) { // Enter
+		if(document.getElementById("loginBlock").style.display == "none") { // is the register block showing?
+			registerUser();
+		} else {
+			submitCredentials();
+		}
+	}
+}
+
 
 function displayRegisterBlock() {
 	document.getElementById("loginBlock").style.display = "none";
