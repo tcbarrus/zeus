@@ -52,7 +52,8 @@ function hideModal() {
 	document.getElementById("shadow").style.visibility = "hidden";
 	document.getElementById("content").className = "";
 
-	if(window.location.pathname == "/views/multipleChoice.html") {
+	var path = window.location.pathname.split("/");
+	if(path[path.length - 1] == "multipleChoice.html") {
 			document.getElementsByTagName("body")[0].style.overflow = "auto";
 	}
 
