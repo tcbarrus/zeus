@@ -195,8 +195,14 @@ function updateView() {
 
 function updateFlashcardDisplay() {
 	var card = flashcards[currentCard.index];
-	flashcardFront.innerHTML = card["front"];
-	flashcardBack.innerHTML = card["back"];
+	if (defaultToFrontSide) {
+		flashcardFront.innerHTML = card["front"];
+		flashcardBack.innerHTML = card["back"];
+	}
+	else {
+		flashcardFront.innerHTML = card["back"];
+		flashcardBack.innerHTML = card["front"];
+	}
 }
 
 function updateStatsDisplay() {
